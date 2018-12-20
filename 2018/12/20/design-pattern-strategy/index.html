@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,7 +82,7 @@
 <meta name="description" content="策略模式 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。  意图 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。 主要解决 在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 何时使用 一个系统有许多许多类，而区分它们的只是他">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大萌小路">
-<meta property="og:url" content="http://yoursite.com/2018/12/20/design_pattern_strategy/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/20/design-pattern-strategy/index.html">
 <meta property="og:site_name" content="大萌小路">
 <meta property="og:description" content="策略模式 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。  意图 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。 主要解决 在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 何时使用 一个系统有许多许多类，而区分它们的只是他">
 <meta property="og:locale" content="zh-Hans">
@@ -99,9 +99,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/20/design_pattern_strategy/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/20/design-pattern-strategy/">
 
 
 
@@ -192,6 +192,36 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -234,12 +264,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/design_pattern_strategy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/design-pattern-strategy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -362,22 +392,6 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/20/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
       
@@ -439,6 +453,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Damon">
+            
               <p class="site-author-name" itemprop="name">Damon</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -450,7 +466,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -525,7 +541,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -624,6 +640,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

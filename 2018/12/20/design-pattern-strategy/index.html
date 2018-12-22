@@ -93,7 +93,9 @@
 <meta property="og:description" content="简介 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/45/W3sDesign_Strategy_Design_Pattern_UML.jpg">
-<meta property="og:updated_time" content="2018-12-21T07:14:20.951Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyfcvvwjkfj317a04wmyd.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyfcryetvxj31es04475r.jpg">
+<meta property="og:updated_time" content="2018-12-22T03:22:12.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="策略模式">
 <meta name="twitter:description" content="简介 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。">
@@ -315,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-21T15:14:20+08:00">
-                2018-12-21
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-22T11:22:12+08:00">
+                2018-12-22
               </time>
             
           </span>
@@ -370,7 +372,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  574
+                  794
                 </span>
               
 
@@ -386,7 +388,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -440,14 +442,23 @@
 <blockquote>
 <p><strong>注意事项：</strong> 如果一个系统的策略多于四个，就需要考虑使用混合模式，解决策略类膨胀的问题。</p>
 </blockquote>
-<p><strong>项目描述</strong></p>
-<ul>
-<li>simple1包，主要对操作行为包装了加减乘除方法。</li>
-<li>simple2包，主要对出现方式的包装</li>
-</ul>
+<h3 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a><strong>项目描述</strong></h3><p><a href="https://github.com/DamonChow/design_pattern/tree/master/strategy" target="_blank" rel="noopener">跳转到我的策略模式GitHub</a></p>
+<h4 id="1-操作行为"><a href="#1-操作行为" class="headerlink" title="1.操作行为"></a>1.操作行为</h4><p>simple1包，主要对操作行为包装了加减乘除方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> AddStrategy());</span><br><span class="line">        log.info(<span class="string">"10 + 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> SubstractStrategy());</span><br><span class="line">        log.info(<span class="string">"10 - 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> MultiplyStrategy());</span><br><span class="line">        log.info(<span class="string">"10 * 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> DivideStrategy());</span><br><span class="line">        log.info(<span class="string">"10 / 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyfcvvwjkfj317a04wmyd.jpg" alt="img"></p>
+<h4 id="2-出现方式"><a href="#2-出现方式" class="headerlink" title="2.出现方式"></a>2.出现方式</h4><p>simple2包描述，主要对出行方式的包装，包装了3种出行方式，</p>
+<p>执行类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TravelApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> BusStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老王"</span>);</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> BicycleStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老张"</span>);</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> WalkStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老李"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<p><u><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyfcryetvxj31es04475r.jpg" alt="image-20181222104657926"></u></p>
+<p>策略上下文</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出行</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeStrategy</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        strategy.travel(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象策略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出现方法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">travel</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.runoob.com/design-pattern/strategy-pattern.html" target="_blank" rel="noopener">策略模式</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Strategy_pattern" target="_blank" rel="noopener">维基</a></p>
-<p><a href="https://www.jianshu.com/p/7b7de81cdfbe" target="_blank" rel="noopener">策略模式实际应用</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Strategy_pattern" target="_blank" rel="noopener">维基里的策略模式</a></p>
+<p><a href="https://www.jianshu.com/p/7b7de81cdfbe" target="_blank" rel="noopener">南乡清水的实际项目运用之Strategy模式</a></p>
 
       
     </div>
@@ -656,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目描述"><span class="nav-number">2.</span> <span class="nav-text">项目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-操作行为"><span class="nav-number">2.1.</span> <span class="nav-text">1.操作行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-出现方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.出现方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -690,7 +701,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">576</span>
+    <span title="Site words total count">796</span>
   
 </div>
 

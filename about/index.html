@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="大萌小路">
 <meta property="og:description" content="学习  收获  记载普通的一个学习者，浩瀚的知识体系中还能继续存在着，还有点付出， 偶尔喜欢写写小小的小说或者随感">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-21T03:58:37.912Z">
+<meta property="og:updated_time" content="2018-12-23T04:12:58.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于">
 <meta name="twitter:description" content="学习  收获  记载普通的一个学习者，浩瀚的知识体系中还能继续存在着，还有点付出， 偶尔喜欢写写小小的小说或者随感">
@@ -387,6 +387,19 @@
               </div>
             
 
+            
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+                <h3 class="widget-title">标签云</h3>
+                <div id="myCanvasContainer" class="widget tagcloud">
+                    <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li></ul>
+                    </canvas>
+                </div>
+            </div>
+            
+
           </nav>
 
           
@@ -659,8 +672,8 @@
     });
     new Valine({
         el: '#comments' ,
-        verify: true,
-        notify: true,
+        verify: false,
+        notify: false,
         appId: 'qnONTmqoP55IswRwABgvPYTy-gzGzoHsz',
         appKey: '69KYYBA0bhgDnHoJzLgGrK00',
         placeholder: '来了，老弟',

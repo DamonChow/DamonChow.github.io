@@ -84,20 +84,20 @@
 
 
 
-<meta name="description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。 在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
+<meta name="description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
 <meta name="keywords" content="设计模式,责任链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="责任链模式">
+<meta property="og:title" content="折腾Java设计模式之责任链模式">
 <meta property="og:url" content="http://damonchow.github.io/2018/12/21/design-pattern-chain/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。 在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
+<meta property="og:description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyh0p6ch0qj31d2054tam.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyh1k4ax4xj31i4060di2.jpg">
-<meta property="og:updated_time" content="2018-12-23T14:31:17.913Z">
+<meta property="og:updated_time" content="2018-12-24T08:55:41.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="责任链模式">
-<meta name="twitter:description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。 在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
+<meta name="twitter:title" content="折腾Java设计模式之责任链模式">
+<meta name="twitter:description" content="责任链模式 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyh0p6ch0qj31d2054tam.jpg">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>责任链模式 | 大萌小路</title>
+  <title>折腾Java设计模式之责任链模式 | 大萌小路</title>
   
 
 
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">责任链模式</h1>
+          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之责任链模式</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-23T22:31:17+08:00">
-                2018-12-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-24T16:55:41+08:00">
+                2018-12-24
               </time>
             
           </span>
@@ -429,8 +429,7 @@
 
       
         <h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><blockquote>
-<p>顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
-<p>在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。</p>
+<p>顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。</p>
 </blockquote>
 <a id="more"></a>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>意图</strong>  避免请求发送者与接收者耦合在一起，让多个对象都有可能接收请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。</p>
@@ -513,6 +512,30 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随意便看看, 打赏来之不易</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+
+    
+      <div id="bitcoin" style="display: inline-block">
+        <img id="bitcoin_qr" src="/images/btc.jpeg" alt="Damon 比特币">
+        <p>比特币</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
       <div>
@@ -523,7 +546,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://damonchow.github.io/2018/12/21/design-pattern-chain/" title="责任链模式">http://damonchow.github.io/2018/12/21/design-pattern-chain/</a>
+    <a href="http://damonchow.github.io/2018/12/21/design-pattern-chain/" title="折腾Java设计模式之责任链模式">http://damonchow.github.io/2018/12/21/design-pattern-chain/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -553,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/20/design-pattern-strategy/" rel="next" title="策略模式">
-                <i class="fa fa-chevron-left"></i> 策略模式
+              <a href="/2018/12/20/design-pattern-strategy/" rel="next" title="折腾Java设计模式之策略模式">
+                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之策略模式
               </a>
             
           </div>
@@ -563,8 +586,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/22/design-pattern/" rel="prev" title="设计模式汇总">
-                设计模式汇总 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/24/design-pattern-state/" rel="prev" title="折腾Java设计模式之状态模式">
+                折腾Java设计模式之状态模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -649,7 +672,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,7 +694,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -684,7 +707,7 @@
                 <h3 class="widget-title">标签云</h3>
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li></ul>
                     </canvas>
                 </div>
             </div>
@@ -767,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.7k</span>
+    <span title="Site words total count">4.2k</span>
   
 </div>
 

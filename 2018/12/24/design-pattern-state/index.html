@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="设计模式,策略,">
+  <meta name="keywords" content="设计模式,状态,">
 
 
 
@@ -84,22 +84,20 @@
 
 
 
-<meta name="description" content="策略模式 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。">
-<meta name="keywords" content="设计模式,策略">
+<meta name="description" content="状态模式 在状态模式（State Pattern）中，类的行为是基于它的状态改变的。这种类型的设计模式属于行为型模式。在状态模式中，我们创建表示各种状态的对象和一个行为随着状态对象改变而改变的 context 对象。通俗点就是一个对象在内部状态发生改变时改变它的行为。">
+<meta name="keywords" content="设计模式,状态">
 <meta property="og:type" content="article">
-<meta property="og:title" content="折腾Java设计模式之策略模式">
-<meta property="og:url" content="http://damonchow.github.io/2018/12/20/design-pattern-strategy/index.html">
+<meta property="og:title" content="折腾Java设计模式之状态模式">
+<meta property="og:url" content="http://damonchow.github.io/2018/12/24/design-pattern-state/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="策略模式 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。">
+<meta property="og:description" content="状态模式 在状态模式（State Pattern）中，类的行为是基于它的状态改变的。这种类型的设计模式属于行为型模式。在状态模式中，我们创建表示各种状态的对象和一个行为随着状态对象改变而改变的 context 对象。通俗点就是一个对象在内部状态发生改变时改变它的行为。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/45/W3sDesign_Strategy_Design_Pattern_UML.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyfcvvwjkfj317a04wmyd.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyfcryetvxj31es04475r.jpg">
-<meta property="og:updated_time" content="2018-12-24T08:56:00.871Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3344200-0407b24a011bc7fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-24T09:56:16.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="折腾Java设计模式之策略模式">
-<meta name="twitter:description" content="策略模式 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/4/45/W3sDesign_Strategy_Design_Pattern_UML.jpg">
+<meta name="twitter:title" content="折腾Java设计模式之状态模式">
+<meta name="twitter:description" content="状态模式 在状态模式（State Pattern）中，类的行为是基于它的状态改变的。这种类型的设计模式属于行为型模式。在状态模式中，我们创建表示各种状态的对象和一个行为随着状态对象改变而改变的 context 对象。通俗点就是一个对象在内部状态发生改变时改变它的行为。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3344200-0407b24a011bc7fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2018/12/20/design-pattern-strategy/">
+  <link rel="canonical" href="http://damonchow.github.io/2018/12/24/design-pattern-state/">
 
 
 
 
 
-  <title>折腾Java设计模式之策略模式 | 大萌小路</title>
+  <title>折腾Java设计模式之状态模式 | 大萌小路</title>
   
 
 
@@ -282,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2018/12/20/design-pattern-strategy/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2018/12/24/design-pattern-state/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -299,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之策略模式</h1>
+          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之状态模式</h1>
         
 
         <div class="post-meta">
@@ -311,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T10:14:59+08:00">
-                2018-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T16:46:14+08:00">
+                2018-12-24
               </time>
             
 
@@ -327,7 +325,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-24T16:56:00+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-24T17:56:16+08:00">
                 2018-12-24
               </time>
             
@@ -364,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/20/design-pattern-strategy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/design-pattern-strategy/" itemprop="commentCount"></span>
+                <a href="/2018/12/24/design-pattern-state/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/24/design-pattern-state/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -392,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  796
+                  1.6k
                 </span>
               
 
@@ -408,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -429,56 +427,65 @@
       
 
       
-        <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
-<p>在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。简单理解就是一组算法，可以互换，再简单点策略就是封装算法。</p>
+        <h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><blockquote>
+<p>在状态模式（State Pattern）中，类的行为是基于它的状态改变的。这种类型的设计模式属于行为型模式。在状态模式中，我们创建表示各种状态的对象和一个行为随着状态对象改变而改变的 context 对象。通俗点就是一个对象在内部状态发生改变时改变它的行为。</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>意图</strong> 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。</p>
-<p><strong>主要解决</strong> 在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。</p>
-<p><strong>何时使用</strong> 一个系统有许多许多类，而区分它们的只是他们直接的行为。</p>
-<p><strong>如何解决</strong> 将这些算法封装成一个一个的类，任意地替换。</p>
-<p><strong>主要角色</strong> </p>
-<ul>
-<li>上下文Context，拥有一个Strategy的引用</li>
-<li>抽象策略Strategy，往往是一个接口(占大部分情况)或者抽象类，通常提供各种具体策略的接口</li>
-<li>具体策略，这就是重点了，封装了各种具体的算法</li>
-</ul>
-<p><strong>UML</strong></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/4/45/W3sDesign_Strategy_Design_Pattern_UML.jpg" alt="img"></p>
-<p><strong>应用实例</strong> </p>
-<ul>
-<li>诸葛亮的锦囊妙计，每一个锦囊就是一个策略；</li>
-<li>旅行的出游方式，选择骑自行车、坐汽车，每一种旅行方式都是一个策略；</li>
-<li>JAVA AWT 中的 LayoutManager；</li>
-</ul>
-<p><strong>优点</strong> 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
-<p><strong>缺点</strong>  1、策略类会增多。 2、所有策略类都需要对外暴露。</p>
-<p><strong>使用场景</strong> </p>
-<ol>
-<li>如果在一个系统里面有许多类，它们之间的区别仅在于它们的行为，那么使用策略模式可以动态地让一个对象在许多行为中选择一种行为。</li>
-<li>一个系统需要动态地在几种算法中选择一种。</li>
-<li>如果一个对象有很多的行为，如果不用恰当的模式，这些行为就只好使用多重的条件选择语句来实现。</li>
-</ol>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>意图</strong> 允许对象在内部状态发生改变时改变它的行为，对象看起来好像修改了它的类。</p>
+<p><strong>主要解决</strong> 对象的行为依赖于它的状态（属性），并且可以根据它的状态改变而改变它的相关行为。</p>
+<p><strong>何时使用</strong> 代码中包含大量与对象状态有关的条件语句。</p>
+<p><strong>如何解决</strong> 将各种具体的状态类抽象出来。</p>
+<p><strong>关键代码</strong> 通常命令模式的接口中只有一个方法。而状态模式的接口中有一个或者多个方法。而且，状态模式的实现类的方法，一般返回值，或者是改变实例变量的值。也就是说，状态模式一般和对象的状态有关。实现类的方法有不同的功能，覆盖接口中的方法。状态模式和命令模式一样，也可以用于消除 if…else 等条件选择语句。</p>
+<p><strong>UML图</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3344200-0407b24a011bc7fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>主要角色</strong></p>
 <blockquote>
-<p><strong>注意事项：</strong> 如果一个系统的策略多于四个，就需要考虑使用混合模式，解决策略类膨胀的问题。</p>
+<p>1）Context(环境类)：环境类拥有各种不同状态的对象，作为外部使用的接口，负责调用状态类接口。 </p>
+<p>2）State(抽象状态)：抽象状态既可以为抽象类，也可以直接定义成接口。主要用于定义状态抽象方法，具体实现由子类负责。 </p>
+<p>3）ConcreteState(具体状态类):具体状态类为抽象状态的实现者，不同的状态类对应这不同的状态，其内部实现也不相同。环境类中使用不同状态的对象时，能实现不同的处理逻辑</p>
 </blockquote>
-<h3 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a><strong>项目描述</strong></h3><p><a href="https://github.com/DamonChow/design_pattern/tree/master/strategy" target="_blank" rel="noopener">跳转到我的策略模式GitHub</a></p>
-<h4 id="1-操作行为"><a href="#1-操作行为" class="headerlink" title="1.操作行为"></a>1.操作行为</h4><p>simple1包，主要对操作行为包装了加减乘除方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> AddStrategy());</span><br><span class="line">        log.info(<span class="string">"10 + 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> SubstractStrategy());</span><br><span class="line">        log.info(<span class="string">"10 - 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> MultiplyStrategy());</span><br><span class="line">        log.info(<span class="string">"10 * 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> DivideStrategy());</span><br><span class="line">        log.info(<span class="string">"10 / 5 = &#123;&#125;"</span>, context.executeStrategy(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyfcvvwjkfj317a04wmyd.jpg" alt="img"></p>
-<h4 id="2-出现方式"><a href="#2-出现方式" class="headerlink" title="2.出现方式"></a>2.出现方式</h4><p>simple2包描述，主要对出行方式的包装，包装了3种出行方式，</p>
-<p>执行类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TravelApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> BusStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老王"</span>);</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> BicycleStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老张"</span>);</span><br><span class="line"></span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> WalkStrategy());</span><br><span class="line">        context.executeStrategy(<span class="string">"老李"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果</p>
-<p><u><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyfcryetvxj31es04475r.jpg" alt="image-20181222104657926"></u></p>
-<p>策略上下文</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出行</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeStrategy</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        strategy.travel(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象策略</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出现方法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">travel</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.runoob.com/design-pattern/strategy-pattern.html" target="_blank" rel="noopener">策略模式</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Strategy_pattern" target="_blank" rel="noopener">维基里的策略模式</a></p>
-<p><a href="https://www.jianshu.com/p/7b7de81cdfbe" target="_blank" rel="noopener">南乡清水的实际项目运用之Strategy模式</a></p>
+<p><strong>应用实例</strong> </p>
+<blockquote>
+<p> 1、打篮球的时候运动员可以有正常状态、不正常状态和超常状态。</p>
+<p> 2、曾侯乙编钟中，’钟是抽象接口’,’钟A’等是具体状态，’曾侯乙编钟’是具体环境（Context）。</p>
+</blockquote>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h3><blockquote>
+<p>1、封装了转换规则。 </p>
+<p>2、枚举可能的状态，在枚举状态之前需要确定状态种类。 </p>
+<p>3、将所有与某个状态有关的行为放到一个类中，并且可以方便地增加新的状态，只需要改变对象状态即可改变对象的行为。 </p>
+<p>4、允许状态转换逻辑与状态对象合成一体，而不是某一个巨大的条件语句块。 </p>
+<p>5、可以让多个环境对象共享一个状态对象，从而减少系统中对象的个数。</p>
+</blockquote>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a><strong>缺点</strong></h3><blockquote>
+<p>1、状态模式的使用必然会增加系统类和对象的个数。 </p>
+<p>2、状态模式的结构与实现都较为复杂，如果使用不当将导致程序结构和代码的混乱。</p>
+<p> 3、状态模式对”开闭原则”的支持并不太好，对于可以切换状态的状态模式，增加新的状态类需要修改那些负责状态转换的源代码，否则无法切换到新增状态，而且修改某个状态类的行为也需修改对应类的源代码。</p>
+</blockquote>
+<p><strong>使用场景</strong></p>
+<blockquote>
+<ul>
+<li><p>行为随状态改变而改变的场景。</p>
+</li>
+<li><p>条件、分支语句的代替者。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="状态模式和策略模式的对比"><a href="#状态模式和策略模式的对比" class="headerlink" title="状态模式和策略模式的对比"></a>状态模式和策略模式的对比</h3><p>现在我们知道，状态模式和策略模式的结构是相似的，但它们的意图不同。让我们重温一下它们的主要不同之处：</p>
+<blockquote>
+<ol>
+<li>策略模式封装了一组相关算法，它允许Client在运行时使用可互换的行为；状态模式帮助一个类在不同的状态显示不同的行为。</li>
+<li>状态模式封装了对象的状态，而策略模式封装算法或策略。因为状态是跟对象密切相关的，它不能被重用；而通过从Context中分离出策略或算法，我们可以重用它们。</li>
+<li>在状态模式中，每个状态通过持有Context的引用，来实现状态转移；但是每个策略都不持有Context的引用，它们只是被Context使用。</li>
+<li>策略实现可以作为参数传递给使用它的对象，例如Collections.sort()，它的参数包含一个Comparator策略。另一方面，状态是Context对象自己的一部分，随着时间的推移，Context对象从一个状态转移到另一个状态。</li>
+<li>虽然它们都符合OCP原则，策略模式也符合SRP原则（单一职责原则），因为每个策略都封装自己的算法，且不依赖其他策略。一个策略的改变，并不会导致其他策略的变化。</li>
+<li>另一个理论上的不同：策略模式定义了对象“怎么做”的部分。例如，排序对象怎么对数据排序。状态模式定义了对象“是什么”和“什么时候做”的部分。例如，对象处于什么状态，什么时候处在某个特定的状态。</li>
+<li>状态模式中很好的定义了状态转移的次序；而策略模式并无此需要：Client可以自由的选择任何策略。</li>
+<li>一些常见的策略模式的例子是封装算法，例如排序算法，加密算法或者压缩算法。如果你看到你的代码需要使用不同类型的相关算法，那么考虑使用策略模式吧。而识别何时使用状态模式是很简单的：如果你需要管理状态和状态转移，但不想使用大量嵌套的条件语句，那么就是它了。</li>
+<li>最后但最重要的一个不同之处是，策略的改变由Client完成；而状态的改变，由Context或状态自己。</li>
+</ol>
+</blockquote>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/songwenbinasdf/article/details/51831926" target="_blank" rel="noopener">Java中，状态模式和策略模式的区别</a></p>
+<p><a href="http://www.runoob.com/design-pattern/state-pattern.html" target="_blank" rel="noopener">状态模式|菜鸟教程</a></p>
 
       
     </div>
@@ -523,7 +530,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://damonchow.github.io/2018/12/20/design-pattern-strategy/" title="折腾Java设计模式之策略模式">http://damonchow.github.io/2018/12/20/design-pattern-strategy/</a>
+    <a href="http://damonchow.github.io/2018/12/24/design-pattern-state/" title="折腾Java设计模式之状态模式">http://damonchow.github.io/2018/12/24/design-pattern-state/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -540,7 +547,7 @@
           
             <a href="/tags/设计模式/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
           
-            <a href="/tags/策略/" rel="tag"><i class="fa fa-tag"></i> 策略</a>
+            <a href="/tags/状态/" rel="tag"><i class="fa fa-tag"></i> 状态</a>
           
         </div>
       
@@ -553,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/design-pattern/" rel="next" title="设计模式汇总">
-                <i class="fa fa-chevron-left"></i> 设计模式汇总
+              <a href="/2018/12/21/design-pattern-chain/" rel="next" title="折腾Java设计模式之责任链模式">
+                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之责任链模式
               </a>
             
           </div>
@@ -562,10 +569,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/21/design-pattern-chain/" rel="prev" title="折腾Java设计模式之责任链模式">
-                折腾Java设计模式之责任链模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -733,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目描述"><span class="nav-number">2.</span> <span class="nav-text">项目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-操作行为"><span class="nav-number">2.1.</span> <span class="nav-text">1.操作行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-出现方式"><span class="nav-number">2.2.</span> <span class="nav-text">2.出现方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态模式"><span class="nav-number">1.</span> <span class="nav-text">状态模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">4.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态模式和策略模式的对比"><span class="nav-number">5.</span> <span class="nav-text">状态模式和策略模式的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

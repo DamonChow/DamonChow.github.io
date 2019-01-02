@@ -95,20 +95,20 @@
 
 
 
-<meta name="description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。  其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就">
+<meta name="description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
 <meta name="keywords" content="设计模式,迭代器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="折腾Java设计模式之迭代器模式">
-<meta property="og:url" content="http://damonchow.github.io/2018/12/24/design-pattern-iterator/index.html">
+<meta property="og:url" content="http://damonchow.github.io/2019/01/02/design-pattern-iterator/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。  其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就">
+<meta property="og:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fysdz7f3j1j317s06ajt1.jpg">
-<meta property="og:updated_time" content="2019-01-02T09:58:02.122Z">
+<meta property="og:updated_time" content="2019-01-02T10:08:51.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="折腾Java设计模式之迭代器模式">
-<meta name="twitter:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。  其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就">
+<meta name="twitter:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2018/12/24/design-pattern-iterator/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/">
 
 
 
@@ -334,7 +334,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2018/12/24/design-pattern-iterator/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -363,8 +363,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T16:46:14+08:00">
-                2018-12-24 16:46:14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:58:03+08:00">
+                2019-01-02 16:58:03
               </time>
             
 
@@ -379,8 +379,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-02T17:58:02+08:00">
-                2019-01-02 17:58:02
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-02T18:08:51+08:00">
+                2019-01-02 18:08:51
               </time>
             
           </span>
@@ -416,8 +416,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/24/design-pattern-iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/24/design-pattern-iterator/" itemprop="commentCount"></span>
+                <a href="/2019/01/02/design-pattern-iterator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/02/design-pattern-iterator/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -483,9 +483,8 @@
       
         <h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><blockquote>
 <p>Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.</p>
-<p>提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。</p>
+<p>提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。<br><a id="more"></a><br>其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就拿迭代器中的角色，在java中找出其对应的类。</p>
 </blockquote>
-<p>其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就拿迭代器中的角色，在java中找出其对应的类。</p>
 <h3 id="具体角色"><a href="#具体角色" class="headerlink" title="具体角色"></a>具体角色</h3><blockquote>
 <p>(1)迭代器角色(Iterator)：定义遍历元素所需要的方法，一般来说会有这么三个方法：取得下一个元素的方法next()，判断是否遍历结束的方法hasNext()），移出当前对象的方法remove(), </p>
 <p>(2)具体迭代器角色(Concrete Iterator)：实现迭代器接口中定义的方法，完成集合的迭代。</p>
@@ -565,7 +564,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://damonchow.github.io/2018/12/24/design-pattern-iterator/" title="折腾Java设计模式之迭代器模式">http://damonchow.github.io/2018/12/24/design-pattern-iterator/</a>
+    <a href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/" title="折腾Java设计模式之迭代器模式">http://damonchow.github.io/2019/01/02/design-pattern-iterator/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -595,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/24/design-pattern-state/" rel="next" title="折腾Java设计模式之状态模式">
-                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之状态模式
+              <a href="/2019/01/02/design-pattern-command/" rel="next" title="折腾Java设计模式之命令模式">
+                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之命令模式
               </a>
             
           </div>
@@ -604,10 +603,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/02/design-pattern-command/" rel="prev" title="折腾Java设计模式之命令模式">
-                折腾Java设计模式之命令模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

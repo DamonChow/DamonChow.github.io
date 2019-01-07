@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="设计模式,迭代器,">
+  <meta name="keywords" content="设计模式,访问者,">
 
 
 
@@ -95,21 +95,22 @@
 
 
 
-<meta name="description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
-<meta name="keywords" content="设计模式,迭代器">
+<meta name="description" content="访问者模式 Represent an operation to be performed on the elements of an object structure. Visitor lets a new operation be defined without changing the classes of the elements on which it operates. 访问者模式的目的">
+<meta name="keywords" content="设计模式,访问者">
 <meta property="og:type" content="article">
-<meta property="og:title" content="折腾Java设计模式之迭代器模式">
-<meta property="og:url" content="http://damonchow.github.io/2019/01/02/design-pattern-iterator/index.html">
+<meta property="og:title" content="折腾Java设计模式之访问者模式">
+<meta property="og:url" content="http://damonchow.github.io/2019/01/07/design-pattern-visitor/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
+<meta property="og:description" content="访问者模式 Represent an operation to be performed on the elements of an object structure. Visitor lets a new operation be defined without changing the classes of the elements on which it operates. 访问者模式的目的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fysdz7f3j1j317s06ajt1.jpg">
-<meta property="og:updated_time" content="2019-01-02T13:33:30.016Z">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/0/00/W3sDesign_Visitor_Design_Pattern_UML.jpg">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Visitor_design_pattern.svg/430px-Visitor_design_pattern.svg.png">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fyy45dgfcoj31ma092gon.jpg">
+<meta property="og:updated_time" content="2019-01-07T10:23:23.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="折腾Java设计模式之迭代器模式">
-<meta name="twitter:description" content="迭代器模式 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png">
+<meta name="twitter:title" content="折腾Java设计模式之访问者模式">
+<meta name="twitter:description" content="访问者模式 Represent an operation to be performed on the elements of an object structure. Visitor lets a new operation be defined without changing the classes of the elements on which it operates. 访问者模式的目的">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/0/00/W3sDesign_Visitor_Design_Pattern_UML.jpg">
 
 
 
@@ -139,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/01/07/design-pattern-visitor/">
 
 
 
 
 
-  <title>折腾Java设计模式之迭代器模式 | 大萌小路</title>
+  <title>折腾Java设计模式之访问者模式 | 大萌小路</title>
   
 
 
@@ -334,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/07/design-pattern-visitor/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -351,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之迭代器模式</h1>
+          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之访问者模式</h1>
         
 
         <div class="post-meta">
@@ -363,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T21:31:13+08:00">
-                2019-01-02 21:31:13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-07T15:15:31+08:00">
+                2019-01-07 15:15:31
               </time>
             
 
@@ -379,8 +380,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-02T21:33:30+08:00">
-                2019-01-02 21:33:30
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-07T18:23:23+08:00">
+                2019-01-07 18:23:23
               </time>
             
           </span>
@@ -416,8 +417,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/02/design-pattern-iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/02/design-pattern-iterator/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/design-pattern-visitor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/07/design-pattern-visitor/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.7k
                 </span>
               
 
@@ -460,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  7
                 </span>
               
             </div>
@@ -481,45 +482,48 @@
       
 
       
-        <h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><blockquote>
-<p>Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.</p>
-<p>提供一种不公示其底层细节(结构)的情况下能顺序访问聚合对象元素的方法。<br><a id="more"></a><br>其实在java体系中，jdk已经引入了迭代器接口以及对于的容器接口等。就拿迭代器中的角色，在java中找出其对应的类。</p>
+        <h3 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h3><blockquote>
+<p>Represent an operation to be performed on the elements of an object structure. Visitor lets a new operation be defined without changing the classes of the elements on which it operates.</p>
+<p><strong>访问者模式的目的是封装一些施加于某种数据结构元素之上的操作。一旦这些操作需要修改的话，接受这个操作的数据结构则可以保持不变。</strong></p>
 </blockquote>
-<h3 id="具体角色"><a href="#具体角色" class="headerlink" title="具体角色"></a>具体角色</h3><blockquote>
-<p>(1)迭代器角色(Iterator)：定义遍历元素所需要的方法，一般来说会有这么三个方法：取得下一个元素的方法next()，判断是否遍历结束的方法hasNext()），移出当前对象的方法remove(), </p>
-<p>(2)具体迭代器角色(Concrete Iterator)：实现迭代器接口中定义的方法，完成集合的迭代。</p>
-<p>(3)容器角色(Aggregate):  一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等</p>
-<p>(4)具体容器角色(ConcreteAggregate)：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList，List接口的链表实现LinkList，Set接口的哈希列表的实现HashSet等。</p>
+<a id="more"></a>
+<p><strong>意图</strong> 主要将数据结构与数据操作分离。</p>
+<p><strong>主要解决</strong> 稳定的数据结构和易变的操作耦合问题。</p>
+<p><strong>何时使用</strong> 需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免让这些操作”污染”这些对象的类，使用访问者模式将这些封装到类中。</p>
+<h3 id="访问者模式的主要角色"><a href="#访问者模式的主要角色" class="headerlink" title="访问者模式的主要角色"></a><strong>访问者模式的主要角色</strong></h3><blockquote>
+<p> ●Vistor（抽象访问者）：抽象访问者为对象结构中每一个具体元素类ConcreteElement声明一个访问操作，从这个操作的名称或参数类型可以清楚知道需要访问的具体元素的类型，具体访问者需要实现这些操作方法，定义对这些元素的访问操作。</p>
+<p>●ConcreteVisitor（具体访问者）：具体访问者实现了每个由抽象访问者声明的操作，每一个操作用于访问对象结构中一种类型的元素。</p>
+<p>●Element（抽象元素）：抽象元素一般是抽象类或者接口，它定义一个accept()方法，该方法通常以一个抽象访问者作为参数。</p>
+<p>●ConcreteElement（具体元素）：具体元素实现了accept()方法，在accept()方法中调用访问者的访问方法以便完成对一个元素的操作。</p>
+<p>● ObjectStructure（对象结构）：对象结构是一个元素的集合，它用于存放元素对象，并且提供了遍历其内部元素的方法。它可以结合组合模式来实现，也可以是一个简单的集合对象，如一个List对象或一个Set对象。</p>
 </blockquote>
-<p>单独举出ArrayList的角色，</p>
-<p>迭代器角色对应java中的java.lang.Iterator，这个迭代器是java容器公用的。</p>
-<p>容器角色对应java.lang.Iterable，其还有Iterator<t> iterator()方法获取迭代器。</t></p>
-<p>具体迭代器角色对应java.lang.ArrayList.Itr，实现了对应的hasNext、next、remove方法。</p>
-<p>具体容器角色那就是java.lang.ArrayList了，实现iterator方法返回Itr具体迭代器，用游标形式实现。</p>
-<h3 id="再看看UML类"><a href="#再看看UML类" class="headerlink" title="再看看UML类"></a>再看看UML类</h3><p><img src="https:////upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png" alt="img"></p>
-<h3 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h3><p><a href="https://github.com/DamonChow/design_pattern/tree/master/iterator" target="_blank" rel="noopener">源码在Github</a></p>
-<p>项目中很简单的实现了一个容器和迭代器。大致参考了ArrayList实现，但是是简洁版本，去除很多无关以及性能上的东西，只保留最基本的迭代器元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Aggregate&lt;Integer&gt; aggregate = <span class="keyword">new</span> ConcreteAggregate&lt;&gt;();</span><br><span class="line">        aggregate.add(<span class="number">1</span>);</span><br><span class="line">        aggregate.add(<span class="number">2</span>);</span><br><span class="line">        aggregate.add(<span class="number">3</span>);</span><br><span class="line">        aggregate.add(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Integer&gt; iterator = aggregate.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            log.info(<span class="string">"循环数据&#123;&#125;"</span>, iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果如下</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fysdz7f3j1j317s06ajt1.jpg" alt="image-20190102175121620"></p>
-<p>简单的迭代器定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>简单容器定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Aggregate</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">Iterator&lt;T&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体容器和具体的迭代器定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteAggregate</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">Aggregate</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Object[] elements;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteAggregate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        elements = <span class="keyword">new</span> Object[<span class="number">16</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        elements[size++] = e;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteIterator&lt;E&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cursor;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> cursor != size;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (cursor &gt;= size) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> (E) elements[cursor++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体容器中用数组来作为容器来存储元素，而且最简单的容器，固定了大小，并没有实现扩容的算法等等，只是一个简单的样例，但是大部分上，都是直接使用java带有的迭代器。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>简化了遍历方式，对于对象集合的遍历，还是比较麻烦的，对于数组或者有序列表，我们尚可以通过游标来取得，但用户需要在对集合了解很清楚的前提下，自行遍历对象，但是对于hash表来说，用户遍历起来就比较麻烦了。而引入了迭代器方法后，用户用起来就简单的多了。</li>
-<li>可以提供多种遍历方式，比如说对有序列表，我们可以根据需要提供正序遍历，倒序遍历两种迭代器，用户用起来只需要得到我们实现好的迭代器，就可以方便的对集合进行遍历了。</li>
-<li>封装性良好，用户只需要得到迭代器就可以遍历，而对于遍历算法则不用去关心。</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>由于迭代器模式将存储数据和遍历数据的职责分离，增加新的聚合类需要对应增加新的迭代器类，类的个数成对增加，这在一定程度上增加了系统的复杂性。</p>
-<p>对于比较简单的遍历（像数组或者有序列表），使用迭代器方式遍历较为繁琐，大家可能都有感觉，像ArrayList，我们宁可愿意使用for循环和get方法来遍历集合。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>迭代器模式是与集合共生共死的，一般来说，我们只要实现一个集合，就需要同时提供这个集合的迭代器，就像java中的Collection，List、Set、Map等，这些集合都有自己的迭代器。假如我们要实现一个这样的新的容器，当然也需要引入迭代器模式，给我们的容器实现一个迭代器。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://en.wikipedia.org/wiki/Iterator_pattern" target="_blank" rel="noopener">wiki的迭代器模式</a></p>
-<p><a href="http://www.runoob.com/design-pattern/iterator-pattern.html" target="_blank" rel="noopener">迭代器模式|菜鸟教程</a></p>
-<p><a href="https://www.cnblogs.com/ysw-go/p/5384516.html" target="_blank" rel="noopener">Java设计模式系列之迭代器模式</a></p>
+<p><strong>使用场景：</strong> 1、对象结构中对象对应的类很少改变，但经常需要在此对象结构上定义新的操作。 2、需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而需要避免让这些操作”污染”这些对象的类，也不希望在增加新操作时修改这些类。</p>
+<h3 id="访问者模式相关UML图"><a href="#访问者模式相关UML图" class="headerlink" title="访问者模式相关UML图"></a>访问者模式相关UML图</h3><p>UML类图和时序图</p>
+<p><img src="https:////upload.wikimedia.org/wikipedia/commons/0/00/W3sDesign_Visitor_Design_Pattern_UML.jpg" alt="img"></p>
+<p>在类图中可以看出，ElementA实现了接口Element的accept(visitor)方法，而通过visitor.visitElementA(this)，相同visitor1类通过实现visitElementA(ElementA a)方法与ElementA关联。相同的ElementB亦是如此原理。</p>
+<p>右上角的时序图，Client对象有一组Element的数据结构，通过循环对每个元素Element调用accept(visitor)方法，例如先是ElementA调用accept(visitor)，实际上就是调用visitor1的visitElementA(A)，同样情况对ElementB。</p>
+<p>更加清晰的类图如下</p>
+<p><img src="https:////upload.wikimedia.org/wikipedia/en/thumb/e/eb/Visitor_design_pattern.svg/430px-Visitor_design_pattern.svg.png" alt="img"></p>
+<h3 id="实例干货"><a href="#实例干货" class="headerlink" title="实例干货"></a>实例干货</h3><p>跳转到对应的源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象元素</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(ElementVisitor visitor)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体元素-车轮</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wheel</span> <span class="keyword">implements</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ElementVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体元素-车身</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Body</span> <span class="keyword">implements</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ElementVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体元素-引擎</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> <span class="keyword">implements</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ElementVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体元素-整车</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(<span class="keyword">final</span> ElementVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象访问者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ElementVisitor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Body body)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Engine engine)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Wheel wheel)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(Car car)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体的一个访问者，纯打印</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DoElementVisitor</span> <span class="keyword">implements</span> <span class="title">ElementVisitor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Body body)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"Moving my body"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Engine engine)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"Starting my engine"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Wheel wheel)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"Kicking my "</span> + wheel.getName() + <span class="string">" wheel"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"Starting my car"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单独还定义对象结构，其实完全就可以使用列表就可以</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ElementStructure</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Element&gt; list = Lists.newArrayList();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addElement</span><span class="params">(Element element)</span></span>&#123;</span><br><span class="line">        list.add(element);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ElementVisitor visitor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Element elem : list) &#123;</span><br><span class="line">            elem.accept(visitor);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述就是针对访问者模式做的一个对于汽车零件的一个打印效果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientWithVisitor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ElementStructure structure = <span class="keyword">new</span> ElementStructure();</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"front left"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"front right"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"back left"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"back right"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Body());</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Engine());</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Car());</span><br><span class="line"></span><br><span class="line">        structure.accept(<span class="keyword">new</span> DoElementVisitor());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientWithoutVisitor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ElementStructure structure = <span class="keyword">new</span> ElementStructure();</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"front left"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"front right"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"back left"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Wheel(<span class="string">"back right"</span>));</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Body());</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Engine());</span><br><span class="line">        structure.addElement(<span class="keyword">new</span> Car());</span><br><span class="line"></span><br><span class="line">        structure.getList().forEach(e -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (e <span class="keyword">instanceof</span> Body) &#123;</span><br><span class="line">                log.info(<span class="string">"Moving my body"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> Engine) &#123;</span><br><span class="line">                log.info(<span class="string">"Starting my engine"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> Car) &#123;</span><br><span class="line">                log.info(<span class="string">"Starting my car"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> Wheel) &#123;</span><br><span class="line">                log.info(<span class="string">"Kicking my "</span> + ((Wheel)e).getName() + <span class="string">" wheel"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印结果都是一样的</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fyy45dgfcoj31ma092gon.jpg" alt="image-20190107164438915"></p>
+<h3 id="总结分析"><a href="#总结分析" class="headerlink" title="总结分析"></a>总结分析</h3><p>在上面的例子中分别用了访问者模式和非访问者模式两种方法。</p>
+<p>1、使用VIsitor的好处一目了然，当需要修改某些元素的业务逻辑时，只需要修改Visitor类中相对应的操作函数即可。例如假设要修改Wheel的逻辑，只需要修改Visitor的visit(Wheel wheel)方法即可。</p>
+<p>2、假设我们又需要新增一个汽车元素天窗的话，只需要在visitor中添加新的接口以处理新元素，而别的元素可以保持不动。  违背开闭原则。</p>
+<p>3、当我们需要添加新的业务操作，只需要添加新的具体访问者，其他的依旧可以保持不变。符合开闭原则。</p>
+<p>同样，有好处也就有缺陷，因为逻辑在visitor里面，所有visitor和Element高度耦合，同样针对visit方法返回类型，需要设计的优雅，如若不然，后期一旦修改返回类型，影响的范围就广，所有访问者接口和实现都波及到。访问者模式要求访问者对象访问并调用每一个元素对象的操作，这意味着元素对象有时候必须暴露一些自己的内部操作和内部状态，否则无法供访问者访问，这一点跟迪米特法则和依赖倒置原则相违背。</p>
+<p>总的而言，访问者模式的使用条件较为苛刻，本身结构也较为复杂，因此在实际应用中使用频率不是特别高。</p>
+<h3 id="JDK中含有的访问者模式"><a href="#JDK中含有的访问者模式" class="headerlink" title="JDK中含有的访问者模式"></a>JDK中含有的访问者模式</h3><p>提供一个方便的可维护的方式来操作一组对象。它使得你在不改变操作的对象前提下，可以修改或者扩展对象的行为。 </p>
+<blockquote>
+<p>javax.lang.model.element.Element and javax.lang.model.element.ElementVisitor</p>
+<p>javax.lang.model.type.TypeMirror and javax.lang.model.type.TypeVisitor</p>
+</blockquote>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.runoob.com/design-pattern/visitor-pattern.html" target="_blank" rel="noopener">访问者模式|菜鸟教程</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Visitor_pattern" target="_blank" rel="noopener">Visitor pattern</a></p>
+<p><a href="https://blog.csdn.net/taozi8023/article/details/51457616" target="_blank" rel="noopener">JAVA设计模式（23）：行为型-访问者模式（Visitor）</a></p>
 
       
     </div>
@@ -564,7 +568,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/" title="折腾Java设计模式之迭代器模式">http://damonchow.github.io/2019/01/02/design-pattern-iterator/</a>
+    <a href="http://damonchow.github.io/2019/01/07/design-pattern-visitor/" title="折腾Java设计模式之访问者模式">http://damonchow.github.io/2019/01/07/design-pattern-visitor/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -581,7 +585,7 @@
           
             <a href="/tags/设计模式/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
           
-            <a href="/tags/迭代器/" rel="tag"><i class="fa fa-tag"></i> 迭代器</a>
+            <a href="/tags/访问者/" rel="tag"><i class="fa fa-tag"></i> 访问者</a>
           
         </div>
       
@@ -594,8 +598,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/02/design-pattern-command/" rel="next" title="折腾Java设计模式之命令模式">
-                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之命令模式
+              <a href="/2019/01/05/principles-of-software-design-patterns/" rel="next" title="软件设计模式原则">
+                <i class="fa fa-chevron-left"></i> 软件设计模式原则
               </a>
             
           </div>
@@ -603,10 +607,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/05/principles-of-software-design-patterns/" rel="prev" title="软件设计模式原则">
-                软件设计模式原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -808,7 +808,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器模式"><span class="nav-number">1.</span> <span class="nav-text">迭代器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体角色"><span class="nav-number">2.</span> <span class="nav-text">具体角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再看看UML类"><span class="nav-number">3.</span> <span class="nav-text">再看看UML类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目实例"><span class="nav-number">4.</span> <span class="nav-text">项目实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">5.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">6.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式"><span class="nav-number">1.</span> <span class="nav-text">访问者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式的主要角色"><span class="nav-number">2.</span> <span class="nav-text">访问者模式的主要角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式相关UML图"><span class="nav-number">3.</span> <span class="nav-text">访问者模式相关UML图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例干货"><span class="nav-number">4.</span> <span class="nav-text">实例干货</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结分析"><span class="nav-number">5.</span> <span class="nav-text">总结分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK中含有的访问者模式"><span class="nav-number">6.</span> <span class="nav-text">JDK中含有的访问者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

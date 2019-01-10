@@ -611,15 +611,15 @@
 <p>软件实体如类、模块、方法等对于扩展开放的，但是对于修改封闭的。</p>
 <p>我们试想一下，产品来需求了，对我们原有的代码要进行升级或者改变的时候，可能我们在修改旧的业务代码时，往往也会新增新的<code>bug</code>，这个时候，有可能因为功能复杂情况下要对整个功能进行重构。这个时候，就应该想到开闭原则，通过扩展实现改变而不是修改原有的东西。</p>
 <p>有没有感觉，对扩展开放，对修改关闭。说起来很简单，感觉像啥也没说一样，具体起来该如何做。</p>
-<p><a href="https://en.wikipedia.org/wiki/Open–closed_principle" target="_blank" rel="noopener">Open–closed principle</a>中一文有描述，<strong>通过继承抽象类和实现接口</strong>。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvT3BlbuKAk2Nsb3NlZF9wcmluY2lwbGU=" title="https://en.wikipedia.org/wiki/Open–closed_principle">Open–closed principle<i class="fa fa-external-link"></i></span>中一文有描述，<strong>通过继承抽象类和实现接口</strong>。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fyvopfwrl1j329w0b6ae5.jpg" alt="img"></p>
 <p>其实，这也正是我们面向对象中的框架设计—–<strong>抽象</strong>，用抽象构建框架，用实现扩展细节。我们队框架进行关闭，通过实现细节进行开放。而我们的业务常常就是这些细节，通过细节的实现，我们就能完成扩展。但是前提是我们的框架要足够抽象化，具有针对需求的满足性，要有足够的预埋性，这其实也是需要一定的经验。</p>
 <h4 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h4><blockquote>
 <p>objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.</p>
 </blockquote>
 <p>程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的。简单点，就是我用基类代替子类的话，程序还是一样的，是对的。</p>
-<p><a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Liskov substitution principle</a>有讲明里氏替换原则的来路。<strong>Barbara Liskov</strong>女士提出来的。</p>
-<p><a href="http://www.engr.mun.ca/~theo/Courses/sd/5895-downloads/sd-principles-3.ppt.pdf" target="_blank" rel="noopener">PDF中有相关的介绍</a></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlza292X3N1YnN0aXR1dGlvbl9wcmluY2lwbGU=" title="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov substitution principle<i class="fa fa-external-link"></i></span>有讲明里氏替换原则的来路。<strong>Barbara Liskov</strong>女士提出来的。</p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy5lbmdyLm11bi5jYS9+dGhlby9Db3Vyc2VzL3NkLzU4OTUtZG93bmxvYWRzL3NkLXByaW5jaXBsZXMtMy5wcHQucGRm" title="http://www.engr.mun.ca/~theo/Courses/sd/5895-downloads/sd-principles-3.ppt.pdf">PDF中有相关的介绍<i class="fa fa-external-link"></i></span></p>
 <p>是这么定义的：</p>
 <blockquote>
 <p>定义1：如果对每一个类型为 T1的对象 o1，都有类型为 T2 的对象o2，使得以 T1定义的所有程序 P 在所有的对象 o1 都代换成 o2 时，程序 P 的行为没有发生变化，那么类型 T2 是类型 T1 的子类型。</p>
@@ -668,7 +668,7 @@
 <p>The principle states:</p>
 <blockquote>
 <ol>
-<li>High-level modules should not depend on low-level modules. Both should depend on <a href="https://en.wikipedia.org/wiki/Abstraction_(computer_science" target="_blank" rel="noopener">abstractions</a>).</li>
+<li>High-level modules should not depend on low-level modules. Both should depend on <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQWJzdHJhY3Rpb25fKGNvbXB1dGVyX3NjaWVuY2U=" title="https://en.wikipedia.org/wiki/Abstraction_(computer_science">abstractions<i class="fa fa-external-link"></i></span>).</li>
 <li>Abstractions should not depend on details. Details should depend on abstractions.</li>
 </ol>
 </blockquote>
@@ -692,7 +692,7 @@
 <li>使用继承时遵循里氏替换原则。</li>
 </ul>
 </blockquote>
-<h4 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h4><p><a href="https://en.wikipedia.org/wiki/Law_of_Demeter" target="_blank" rel="noopener">From Wikipedia, the free encyclopedia</a></p>
+<h4 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h4><p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGF3X29mX0RlbWV0ZXI=" title="https://en.wikipedia.org/wiki/Law_of_Demeter">From Wikipedia, the free encyclopedia<i class="fa fa-external-link"></i></span></p>
 <blockquote>
 <p>Each unit should have only limited knowledge about other units: only units “closely” related to the current unit.<br>Each unit should only talk to its friends; don’t talk to strangers.<br>Only talk to your immediate friends.</p>
 </blockquote>
@@ -738,15 +738,15 @@
 </ol>
 </blockquote>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>单一职责原则告诉我们实现类要职责单一；里氏替换原则告诉我们不要破坏继承体系；依赖倒置原则告诉我们要面向接口编程；接口隔离原则告诉我们在设计接口的时候要精简单一；迪米特法则告诉我们要降低耦合。而开闭原则是总纲，他告诉我们要对扩展开放，对修改关闭。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://stackify.com/solid-design-principles/" target="_blank" rel="noopener">SOLID Design Principles Explained</a></p>
-<p><a href="https://dzone.com/articles/the-solid-principles-in-real-life" target="_blank" rel="noopener">The SOLID Principles in Real Life</a></p>
-<p><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design" target="_blank" rel="noopener">S.O.L.I.D: The First 5 Principles of Object Oriented Design</a></p>
-<p><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">SOLID</a></p>
-<p><a href="https://blog.csdn.net/rocketeerli/article/details/81585705" target="_blank" rel="noopener">设计模式六大原则——SOLID</a></p>
-<p><a href="http://www.uml.org.cn/sjms/201211023.asp" target="_blank" rel="noopener">软件设计模式六大原则</a></p>
-<p><a href="https://www.cnblogs.com/OceanEyes/p/overview-of-solid-principles.html" target="_blank" rel="noopener">浅谈 SOLID 原则的具体使用</a></p>
-<p><a href="https://www.jianshu.com/p/14589fb6978e" target="_blank" rel="noopener">白话设计——浅谈迪米特法则</a></p>
-<p><a href="http://c.biancheng.net/view/1333.html" target="_blank" rel="noopener">合成复用原则——面向对象设计原则</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><span class="exturl" data-url="aHR0cHM6Ly9zdGFja2lmeS5jb20vc29saWQtZGVzaWduLXByaW5jaXBsZXMv" title="https://stackify.com/solid-design-principles/">SOLID Design Principles Explained<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kem9uZS5jb20vYXJ0aWNsZXMvdGhlLXNvbGlkLXByaW5jaXBsZXMtaW4tcmVhbC1saWZl" title="https://dzone.com/articles/the-solid-principles-in-real-life">The SOLID Principles in Real Life<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zY290Y2guaW8vYmFyLXRhbGsvcy1vLWwtaS1kLXRoZS1maXJzdC1maXZlLXByaW5jaXBsZXMtb2Ytb2JqZWN0LW9yaWVudGVkLWRlc2lnbg==" title="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">S.O.L.I.D: The First 5 Principles of Object Oriented Design<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU09MSUQ=" title="https://en.wikipedia.org/wiki/SOLID">SOLID<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvY2tldGVlcmxpL2FydGljbGUvZGV0YWlscy84MTU4NTcwNQ==" title="https://blog.csdn.net/rocketeerli/article/details/81585705">设计模式六大原则——SOLID<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy51bWwub3JnLmNuL3NqbXMvMjAxMjExMDIzLmFzcA==" title="http://www.uml.org.cn/sjms/201211023.asp">软件设计模式六大原则<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vT2NlYW5FeWVzL3Avb3ZlcnZpZXctb2Ytc29saWQtcHJpbmNpcGxlcy5odG1s" title="https://www.cnblogs.com/OceanEyes/p/overview-of-solid-principles.html">浅谈 SOLID 原则的具体使用<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xNDU4OWZiNjk3OGU=" title="https://www.jianshu.com/p/14589fb6978e">白话设计——浅谈迪米特法则<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2MuYmlhbmNoZW5nLm5ldC92aWV3LzEzMzMuaHRtbA==" title="http://c.biancheng.net/view/1333.html">合成复用原则——面向对象设计原则<i class="fa fa-external-link"></i></span></p>
 
       
     </div>
@@ -807,7 +807,7 @@
     <a href="http://damonchow.github.io/2019/01/05/principles-of-software-design-patterns/" title="软件设计模式原则">http://damonchow.github.io/2019/01/05/principles-of-software-design-patterns/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -918,7 +918,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1003,7 +1003,7 @@
                   
                     
                   
-                  <a href="https://github.com/DamonChow" title="GitHub &rarr; https://github.com/DamonChow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdw==" title="GitHub &rarr; https://github.com/DamonChow"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -1014,7 +1014,7 @@
                   
                     
                   
-                  <a href="mailto:damon_chow@163.com" title="E-Mail &rarr; mailto:damon_chow@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <span class="exturl" data-url="bWFpbHRvOmRhbW9uX2Nob3dAMTYzLmNvbQ==" title="E-Mail &rarr; mailto:damon_chow@163.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
                 </span>
               
             </div>
@@ -1027,7 +1027,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
              </div>
           
 
@@ -1094,7 +1094,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">49k</span>
   
 
   
@@ -1105,12 +1105,12 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">43 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
   
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
 
 
 
@@ -1118,7 +1118,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v6.7.0</div>
 
 
 
@@ -1676,6 +1676,8 @@
   
 
   
+  <script src="/js/src/exturl.js?v=6.7.0"></script>
+
 
   
 

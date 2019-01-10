@@ -586,7 +586,7 @@
 <p>具体迭代器角色对应java.lang.ArrayList.Itr，实现了对应的hasNext、next、remove方法。</p>
 <p>具体容器角色那就是java.lang.ArrayList了，实现iterator方法返回Itr具体迭代器，用游标形式实现。</p>
 <h3 id="再看看UML类"><a href="#再看看UML类" class="headerlink" title="再看看UML类"></a>再看看UML类</h3><p><img src="https:////upload.wikimedia.org/wikipedia/commons/thumb/1/13/Iterator_UML_class_diagram.svg/500px-Iterator_UML_class_diagram.svg.png" alt="img"></p>
-<h3 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h3><p><a href="https://github.com/DamonChow/design_pattern/tree/master/iterator" target="_blank" rel="noopener">源码在Github</a></p>
+<h3 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdy9kZXNpZ25fcGF0dGVybi90cmVlL21hc3Rlci9pdGVyYXRvcg==" title="https://github.com/DamonChow/design_pattern/tree/master/iterator">源码在Github<i class="fa fa-external-link"></i></span></p>
 <p>项目中很简单的实现了一个容器和迭代器。大致参考了ArrayList实现，但是是简洁版本，去除很多无关以及性能上的东西，只保留最基本的迭代器元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Aggregate&lt;Integer&gt; aggregate = <span class="keyword">new</span> ConcreteAggregate&lt;&gt;();</span><br><span class="line">        aggregate.add(<span class="number">1</span>);</span><br><span class="line">        aggregate.add(<span class="number">2</span>);</span><br><span class="line">        aggregate.add(<span class="number">3</span>);</span><br><span class="line">        aggregate.add(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Integer&gt; iterator = aggregate.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            log.info(<span class="string">"循环数据&#123;&#125;"</span>, iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行结果如下</p>
@@ -606,9 +606,9 @@
 <h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>由于迭代器模式将存储数据和遍历数据的职责分离，增加新的聚合类需要对应增加新的迭代器类，类的个数成对增加，这在一定程度上增加了系统的复杂性。</p>
 <p>对于比较简单的遍历（像数组或者有序列表），使用迭代器方式遍历较为繁琐，大家可能都有感觉，像ArrayList，我们宁可愿意使用for循环和get方法来遍历集合。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>迭代器模式是与集合共生共死的，一般来说，我们只要实现一个集合，就需要同时提供这个集合的迭代器，就像java中的Collection，List、Set、Map等，这些集合都有自己的迭代器。假如我们要实现一个这样的新的容器，当然也需要引入迭代器模式，给我们的容器实现一个迭代器。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://en.wikipedia.org/wiki/Iterator_pattern" target="_blank" rel="noopener">wiki的迭代器模式</a></p>
-<p><a href="http://www.runoob.com/design-pattern/iterator-pattern.html" target="_blank" rel="noopener">迭代器模式|菜鸟教程</a></p>
-<p><a href="https://www.cnblogs.com/ysw-go/p/5384516.html" target="_blank" rel="noopener">Java设计模式系列之迭代器模式</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSXRlcmF0b3JfcGF0dGVybg==" title="https://en.wikipedia.org/wiki/Iterator_pattern">wiki的迭代器模式<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy5ydW5vb2IuY29tL2Rlc2lnbi1wYXR0ZXJuL2l0ZXJhdG9yLXBhdHRlcm4uaHRtbA==" title="http://www.runoob.com/design-pattern/iterator-pattern.html">迭代器模式|菜鸟教程<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20veXN3LWdvL3AvNTM4NDUxNi5odG1s" title="https://www.cnblogs.com/ysw-go/p/5384516.html">Java设计模式系列之迭代器模式<i class="fa fa-external-link"></i></span></p>
 
       
     </div>
@@ -669,7 +669,7 @@
     <a href="http://damonchow.github.io/2019/01/02/design-pattern-iterator/" title="折腾Java设计模式之迭代器模式">http://damonchow.github.io/2019/01/02/design-pattern-iterator/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -782,7 +782,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -867,7 +867,7 @@
                   
                     
                   
-                  <a href="https://github.com/DamonChow" title="GitHub &rarr; https://github.com/DamonChow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdw==" title="GitHub &rarr; https://github.com/DamonChow"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -878,7 +878,7 @@
                   
                     
                   
-                  <a href="mailto:damon_chow@163.com" title="E-Mail &rarr; mailto:damon_chow@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <span class="exturl" data-url="bWFpbHRvOmRhbW9uX2Nob3dAMTYzLmNvbQ==" title="E-Mail &rarr; mailto:damon_chow@163.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
                 </span>
               
             </div>
@@ -891,7 +891,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
              </div>
           
 
@@ -958,7 +958,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">49k</span>
   
 
   
@@ -969,12 +969,12 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">43 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
   
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
 
 
 
@@ -982,7 +982,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v6.7.0</div>
 
 
 
@@ -1540,6 +1540,8 @@
   
 
   
+  <script src="/js/src/exturl.js?v=6.7.0"></script>
+
 
   
 

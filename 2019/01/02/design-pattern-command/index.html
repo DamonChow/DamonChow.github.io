@@ -590,7 +590,7 @@
 <h3 id="再来看看UML图"><a href="#再来看看UML图" class="headerlink" title="再来看看UML图"></a>再来看看UML图</h3><p><img src="https:////upload.wikimedia.org/wikipedia/commons/c/c8/W3sDesign_Command_Design_Pattern_UML.jpg" alt="img"></p>
 <p><img src="https:////upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/700px-Command_pattern.svg.png" alt="img"></p>
 <p>从上方的时序图中可以看出运行的顺序，Invoker执行execute方法，调用Command1对象，Command1执行action1方法调用Receiver1对象。</p>
-<h3 id="干货代码"><a href="#干货代码" class="headerlink" title="干货代码"></a>干货代码</h3><p><a href="https://github.com/DamonChow/design_pattern/tree/master/command" target="_blank" rel="noopener">源码在我的GitHub地址</a></p>
+<h3 id="干货代码"><a href="#干货代码" class="headerlink" title="干货代码"></a>干货代码</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdy9kZXNpZ25fcGF0dGVybi90cmVlL21hc3Rlci9jb21tYW5k" title="https://github.com/DamonChow/design_pattern/tree/master/command">源码在我的GitHub地址<i class="fa fa-external-link"></i></span></p>
 <h4 id="普通的命令模式"><a href="#普通的命令模式" class="headerlink" title="普通的命令模式"></a>普通的命令模式</h4><p>现在结合下上回说到的<a href="https://damonchow.github.io/2018/12/24/design-pattern-state">状态模式</a>一起来实现这个风扇的左转和右转功能，这次把他用命令模式来代替之前风扇的转动，把它当做命令来。</p>
 <p>客户端简单的定义请求方和接收方以及对于的左转命令和右转命令，设置命令后对应的执行命令。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Invoker invoker = <span class="keyword">new</span> Invoker();</span><br><span class="line">        Receiver receiver = <span class="keyword">new</span> Receiver();</span><br><span class="line">        Command leftCommand = <span class="keyword">new</span> LeftCommand(receiver);</span><br><span class="line">        Command rightCommand = <span class="keyword">new</span> RightCommand(receiver);</span><br><span class="line"></span><br><span class="line">        invoker.setCommand(rightCommand);</span><br><span class="line">        invoker.execute();</span><br><span class="line">        invoker.execute();</span><br><span class="line">        invoker.execute();</span><br><span class="line"></span><br><span class="line">        invoker.setCommand(leftCommand);</span><br><span class="line">        invoker.execute();</span><br><span class="line">        invoker.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -649,9 +649,9 @@
 <p>java.lang.Runnable </p>
 <p>javax.swing.Action</p>
 </blockquote>
-<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="https://www.cnblogs.com/lfxiao/p/6825644.html" target="_blank" rel="noopener">java设计模式之命令模式</a></p>
-<p><a href="https://www.cnblogs.com/tinyking/p/5938547.html" target="_blank" rel="noopener">细数JDK里的设计模式</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank" rel="noopener">wiki的命令模式</a></p>
+<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGZ4aWFvL3AvNjgyNTY0NC5odG1s" title="https://www.cnblogs.com/lfxiao/p/6825644.html">java设计模式之命令模式<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdGlueWtpbmcvcC81OTM4NTQ3Lmh0bWw=" title="https://www.cnblogs.com/tinyking/p/5938547.html">细数JDK里的设计模式<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tbWFuZF9wYXR0ZXJu" title="https://en.wikipedia.org/wiki/Command_pattern">wiki的命令模式<i class="fa fa-external-link"></i></span></p>
 
       
     </div>
@@ -712,7 +712,7 @@
     <a href="http://damonchow.github.io/2019/01/02/design-pattern-command/" title="折腾Java设计模式之命令模式">http://damonchow.github.io/2019/01/02/design-pattern-command/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -825,7 +825,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -910,7 +910,7 @@
                   
                     
                   
-                  <a href="https://github.com/DamonChow" title="GitHub &rarr; https://github.com/DamonChow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdw==" title="GitHub &rarr; https://github.com/DamonChow"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -921,7 +921,7 @@
                   
                     
                   
-                  <a href="mailto:damon_chow@163.com" title="E-Mail &rarr; mailto:damon_chow@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <span class="exturl" data-url="bWFpbHRvOmRhbW9uX2Nob3dAMTYzLmNvbQ==" title="E-Mail &rarr; mailto:damon_chow@163.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
                 </span>
               
             </div>
@@ -934,7 +934,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
              </div>
           
 
@@ -1001,7 +1001,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">49k</span>
   
 
   
@@ -1012,12 +1012,12 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">43 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
   
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
 
 
 
@@ -1025,7 +1025,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v6.7.0</div>
 
 
 
@@ -1583,6 +1583,8 @@
   
 
   
+  <script src="/js/src/exturl.js?v=6.7.0"></script>
+
 
   
 

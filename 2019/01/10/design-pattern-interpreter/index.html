@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpreter_UML_class_diagram.svg/536px-Interpreter_UML_class_diagram.svg.png">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/3/33/W3sDesign_Interpreter_Design_Pattern_UML.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fz3kjs5hgrj31eu036dgk.jpg">
-<meta property="og:updated_time" content="2019-01-12T02:23:33.975Z">
+<meta property="og:updated_time" content="2019-01-12T06:09:44.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="折腾Java设计模式之解释器模式">
 <meta name="twitter:description" content="解释器模式              是类的行为模式，给定一个语言之后，解释器模式可以定义出其文法的一种表示，并同时提供一个解释器。客户端可以使用这个解释器来解释这个语言中的句子。">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-12 10:23:33 10:23:33" itemprop="dateModified" datetime="2019-01-12T10:23:33+08:00">2019-01-12 10:23:33</time>
+                <time title="修改时间：2019-01-12 14:09:44 14:09:44" itemprop="dateModified" datetime="2019-01-12T14:09:44+08:00">2019-01-12 14:09:44</time>
               
             
           </span>
@@ -564,8 +564,8 @@
 <p><strong>如何解决</strong> 构件语法树，定义终结符与非终结符。</p>
 <p><strong>关键代码</strong> 构件环境类，包含解释器之外的一些全局信息，一般是 HashMap。</p>
 <h3 id="解释器模式相关UML图"><a href="#解释器模式相关UML图" class="headerlink" title="解释器模式相关UML图"></a>解释器模式相关UML图</h3><p>类图</p>
-<p><img src="https:////upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpreter_UML_class_diagram.svg/536px-Interpreter_UML_class_diagram.svg.png" alt="Interpreter UML class diagram.svg"></p>
-<p><img src="https:////upload.wikimedia.org/wikipedia/commons/3/33/W3sDesign_Interpreter_Design_Pattern_UML.jpg" alt="img"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpreter_UML_class_diagram.svg/536px-Interpreter_UML_class_diagram.svg.png" alt="Interpreter UML class diagram.svg"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/W3sDesign_Interpreter_Design_Pattern_UML.jpg" alt="img"></p>
 <p>可以看出右侧的协作图(object collaboration diagram)展现出运行时的解释器模式。Client向右侧抽象语法树发送解释请求，请求被转发并向下到树结构的所有对象。</p>
 <h3 id="解释器模式的主要角色"><a href="#解释器模式的主要角色" class="headerlink" title="解释器模式的主要角色"></a>解释器模式的主要角色</h3><blockquote>
 <p>抽象解释器(AbstractExpression/Expression)：声明一个所有具体表达式都要实现的抽象接口（或者抽象类），接口中主要是一个interpret()方法，称为解释操作。具体解释任务由它的各个实现类来完成，具体的解释器分别由终结符解释器TerminalExpression和非终结符解释器NonterminalExpression完成。</p>
@@ -680,6 +680,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/01/13/fescar/" rel="prev" title="阿里巴巴开源分布式事务解决方案 FESCAR">
+                阿里巴巴开源分布式事务解决方案 FESCAR <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -754,7 +758,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -771,7 +775,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -798,7 +804,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -811,7 +823,7 @@
                     <h3 class="widget-title">标签云</h3>
                     <div id="myCanvasContainer" class="widget tagcloud">
                         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
+                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
                         </canvas>
                     </div>
                 </div>
@@ -930,7 +942,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">52k</span>
+    <span title="站点总字数">59k</span>
   
 
   
@@ -941,7 +953,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">47 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
   
 </div>
 

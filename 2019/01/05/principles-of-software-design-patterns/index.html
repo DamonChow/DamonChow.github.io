@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fyvopfwrl1j329w0b6ae5.jpg">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fyw21qfycbj30bn089aab.jpg">
-<meta property="og:updated_time" content="2019-01-05T14:09:51.122Z">
+<meta property="og:updated_time" content="2019-01-12T06:11:20.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件设计模式原则">
 <meta name="twitter:description" content="软件设计模式原则在我们面向对象的设计过程中，我们的code既要可读性高方便维护，同时还需要另外一个可复用性。这次我们来学习软件设计模式中涉及到的一些原则————&amp;gt;面向对象设计   SOLID">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-05 22:09:51 22:09:51" itemprop="dateModified" datetime="2019-01-05T22:09:51+08:00">2019-01-05 22:09:51</time>
+                <time title="修改时间：2019-01-12 14:11:20 14:11:20" itemprop="dateModified" datetime="2019-01-12T14:11:20+08:00">2019-01-12 14:11:20</time>
               
             
           </span>
@@ -676,7 +676,7 @@
 <p>在Java语言中的表现就是：模块间的依赖通过抽象发生，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或抽象类产生的。接口或抽象类不依赖于实现类。实现类依赖于接口或抽象类。</p>
 <p>简而言之，尽可能的使用接口或者抽象类，即所谓的<strong>面向接口编程</strong>。</p>
 <p>依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方法返回类型声明，以及数据类型的转换等，而不要用具体类来做这些事情。为了确保该原则的应用，一个具体类应当只实现接口或抽象类中声明过的方法，而不要给出多余的方法，否则将无法调用到在子类中增加的新方法。</p>
-<p><img src="https:////upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png" alt="Dependency inversion.png"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png" alt="Dependency inversion.png"></p>
 <p>这张图，其实就很好的表达了依赖倒置原则，ObjectB应该依赖InterfaceA去申明ObjectA而非直接去依赖ObjectA，而ObjectA也应该依赖InterfaceA，这就是<strong>高层模块不应该依赖底层模块，两者都应该依赖其抽象</strong>和<strong>细节应该依赖抽象</strong>。</p>
 <p>我们来看看如下的示例，刚开始，学生只是简单的完成学校里的白天课堂作业。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SchoolWork</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"学生每天在学校就完成课堂作业了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">(SchoolWork schoolWork)</span> </span>&#123;</span><br><span class="line">        schoolWork.work();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//客户端调用</span></span><br><span class="line">Student student = <span class="keyword">new</span> Student();</span><br><span class="line">SchoolWork work = <span class="keyword">new</span> SchoolWork();</span><br><span class="line">student.work(work);</span><br></pre></td></tr></table></figure>
@@ -918,7 +918,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -935,7 +935,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -962,7 +964,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -975,7 +983,7 @@
                     <h3 class="widget-title">标签云</h3>
                     <div id="myCanvasContainer" class="widget tagcloud">
                         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
+                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
                         </canvas>
                     </div>
                 </div>
@@ -1094,7 +1102,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">52k</span>
+    <span title="站点总字数">59k</span>
   
 
   
@@ -1105,7 +1113,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">47 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
   
 </div>
 

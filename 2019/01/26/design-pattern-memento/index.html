@@ -101,24 +101,21 @@
 
 
 
-  <meta name="description" content="场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。">
+  <meta name="description" content="备忘录模式Without violating encapsulation, capture and externalize an object’s internal state allowing the object to be restored to this state later.在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。">
 <meta name="keywords" content="微服务, 分布式, Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">
-<meta property="og:url" content="http://damonchow.github.io/2019/01/17/annual-personal-report/index.html">
+<meta property="og:title" content="折腾Java设计模式之备忘录模式">
+<meta property="og:url" content="http://damonchow.github.io/2019/01/26/design-pattern-memento/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。">
+<meta property="og:description" content="备忘录模式Without violating encapsulation, capture and externalize an object’s internal state allowing the object to be restored to this state later.在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fz9ku49r3tj30uu0gi7gf.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fz9l1didszj313g0qedmh.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fz9l70jwg2j30zy0nydzb.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fz9lojw8glj31rm0okadq.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fz9lqsx0q6j312p0u0e56.jpg">
-<meta property="og:updated_time" content="2019-01-17T07:17:04.079Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fzjzi674u6j30iw06omxu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fzk24eet38j3258090gof.jpg">
+<meta property="og:updated_time" content="2019-01-26T08:22:49.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">
-<meta name="twitter:description" content="场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fz9ku49r3tj30uu0gi7gf.jpg">
+<meta name="twitter:title" content="折腾Java设计模式之备忘录模式">
+<meta name="twitter:description" content="备忘录模式Without violating encapsulation, capture and externalize an object’s internal state allowing the object to be restored to this state later.在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fzjzi674u6j30iw06omxu.jpg">
 
 
 
@@ -127,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2019/01/17/annual-personal-report/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/01/26/design-pattern-memento/">
 
 
 
@@ -137,7 +134,7 @@
   };
 </script>
 
-  <title>Mysql我是怎么随机截取字符数组里的字符串并且一一对应 | 大萌小路</title>
+  <title>折腾Java设计模式之备忘录模式 | 大萌小路</title>
   
 
 
@@ -417,7 +414,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/17/annual-personal-report/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/26/design-pattern-memento/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -434,7 +431,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mysql我是怎么随机截取字符数组里的字符串并且一一对应
+          <h1 class="post-title" itemprop="name headline">折腾Java设计模式之备忘录模式
 
               
             
@@ -460,7 +457,7 @@
                 
               
 
-              <time title="创建时间：2019-01-17 14:16:30 14:16:30" itemprop="dateCreated datePublished" datetime="2019-01-17T14:16:30+08:00">2019-01-17 14:16:30</time>
+              <time title="创建时间：2019-01-26 11:59:17 11:59:17" itemprop="dateCreated datePublished" datetime="2019-01-26T11:59:17+08:00">2019-01-26 11:59:17</time>
             
 
             
@@ -477,29 +474,11 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-17 15:17:04 15:17:04" itemprop="dateModified" datetime="2019-01-17T15:17:04+08:00">2019-01-17 15:17:04</time>
+                <time title="修改时间：2019-01-26 16:22:49 16:22:49" itemprop="dateModified" datetime="2019-01-26T16:22:49+08:00">2019-01-26 16:22:49</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -509,8 +488,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/17/annual-personal-report/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/annual-personal-report/" itemprop="commentCount"></span>
+                <a href="/2019/01/26/design-pattern-memento/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/design-pattern-memento/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -539,7 +518,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.4k</span>
+                <span title="本文字数">2.9k</span>
               
 
               
@@ -574,48 +553,32 @@
 
       
         <div class="note info">
-            <p>场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。</p>
+            <h1 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h1><p>Without violating encapsulation, capture and externalize an object’s internal state allowing the object to be restored to this state later.</p><p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。</p>
           </div>
 <a id="more"></a>
-<p>话不多说，老夫拿起键盘就是干。</p>
-<p>五毒有欧，数据俺不九班的由其他各个系统小组提供，但是有些数据是随机生成的一些描述性的文本，而该文本从固定的文本数组而来。前端展示效果又要将随机文本拆成几个部分来。</p>
-<p>正常的sql拼接成json还方便。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONCAT('\"app\":&#123;\"time\":\"', DATE_FORMAT(time, "%Y-%m-%d %T"), '\",\"days\":', days, </span><br><span class="line">case when typeTime is null then '' else CONCAT(',\"typeTime\":\"', DATE_FORMAT(typeTime, "%Y-%m-%d %T"), '\"') <span class="keyword">end</span>,<span class="string">'&#125;'</span>)</span><br></pre></td></tr></table></figure>
-<p>随机文本来了</p>
-<blockquote>
-<p>学富五车：再美的气质，也掩盖不了你才华本质<br>足智多谋：脑力使用积极分子，非你莫属<br>仗义执言：你的见解，面面俱到，深入人心<br>火眼金睛：独特的洞察力，总能获悉一切<br>见多识广：最美的阅历，就是沿路的风景<br>责任担当：先天下之忧而忧,后天下之乐而乐</p>
-</blockquote>
-<p>从上面可以看的出，它们之间一一对应的。</p>
-<p>唯独那些随机文本着实思考片刻。来，我们层层剖析它。</p>
-<h2 id="截取文本"><a href="#截取文本" class="headerlink" title="截取文本"></a>截取文本</h2><p>mysql中怎么从数组中取随机的文本，参考substring_index函数。分为两步走，第一步先去倒数开始往前数倒数几位，第二步再从新的数组中取第一位。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substring_index(substring_index(array, '符合间隔', -n), '符合间隔', 1)</span><br></pre></td></tr></table></figure>
-<h2 id="构造随机因子"><a href="#构造随机因子" class="headerlink" title="构造随机因子"></a>构造随机因子</h2><p>现在再看看这个随机因子怎么取，参考rand()函数。</p>
-<p>因为取的是-1到-7之间的随机数。所以最终的效果就是如下。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-floor(rand()*7+1)</span><br></pre></td></tr></table></figure>
-<p>取随机范围内的值可以参考这个公式</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLOOR(start_num + RAND() * (end_num - start_num + 1))</span><br></pre></td></tr></table></figure>
-<h2 id="开始第一次截取"><a href="#开始第一次截取" class="headerlink" title="开始第一次截取"></a>开始第一次截取</h2><p>随机串截取方法有了，随机数也有了，开干。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id, <span class="keyword">CONCAT</span>(<span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,-<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>)),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,-<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>)),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> <span class="keyword">data</span>;</span><br></pre></td></tr></table></figure>
-<p>结果发现对不上啊，【责任担当】应该对应【先天下之忧而忧,后天下之乐而乐】，而结果出现部分对应到【再美的气质，也掩盖不了你才华本质】<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fz9ku49r3tj30uu0gi7gf.jpg" alt="img"></p>
-<h2 id="努力第二次截取"><a href="#努力第二次截取" class="headerlink" title="努力第二次截取"></a>努力第二次截取</h2><p>这次考虑到上回我们是把随机因子放在sql里没句话里，所以每次都执行了2次，生成是随机因子就不一样了，截取的结果就对应不上，那，我们先在子查询里先把随机因子生成后，再在外层用这个随机因子这下应该不一样了把。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, <span class="keyword">CONCAT</span>(<span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span>) temp</span><br></pre></td></tr></table></figure>
-<p>吐血的图片在查找中，从开头看就看的出来，对应不上啦，前几个就前部对应【爱笑的你运气一定不会差】，爱笑的我，运气就是这么差。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fz9l1didszj313g0qedmh.jpg" alt="image-20190117145010072"></p>
-<p>改变下语句把随机因子打印出来</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, desc_index, <span class="keyword">CONCAT</span>(desc_index, <span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span>) temp</span><br></pre></td></tr></table></figure>
-<p><strong><em>**</em></strong>，前面这些打星号的，都是脏话，忽略它，随机因子，明明在子查询都生成了，为毛还是不一样。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fz9l70jwg2j30zy0nydzb.jpg" alt="image-20190117145539095"></p>
-<h2 id="最终绞尽脑汁的截取"><a href="#最终绞尽脑汁的截取" class="headerlink" title="最终绞尽脑汁的截取"></a>最终绞尽脑汁的截取</h2><p>本想在子查询中使用rand()把随机因子可以搞出来，哪成想，在外层的查询时rand()又TMM的重算了一遍。</p>
-<p>一顿参考一顿找资料，偶然间发现了问题所在</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9idWdzLm15c3FsLmNvbS9idWcucGhwP2lkPTg2NjI0" title="https://bugs.mysql.com/bug.php?id=86624">Mysql尽然有这样的bug<i class="fa fa-external-link"></i></span>  </p>
-<p>2017年有个哥们提了这样的一个issue，就是上面的链接。</p>
-<p>里面说了一些情况，在mysql5.6里，随机数是一样的，5.7里随机数不一样。如果子查询里不使用表，随机数也是一样。刚刚好mysql就是5.7，刚刚好中招了。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fz9lojw8glj31rm0okadq.jpg" alt="image-20190117151229364"></p>
-<p>根据作者和Roy Lyseng的建议，我用limit，没想到，尽然阔以啦，老泪纵横啊。</p>
-<p>还是老外好，成功的解决方案，也会在issue里说明下的。</p>
-<p>改造后的最终样子。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, desc_index, <span class="keyword">CONCAT</span>(desc_index, <span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span> <span class="keyword">limit</span> <span class="number">100000</span>) temp</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fz9lqsx0q6j312p0u0e56.jpg" alt="image-20190117151435160"></p>
+<p>所谓备忘录模式就是在不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样可以在以后将对象恢复到原先保存的状态。很多时候我们总是需要记录一个对象的内部状态，这样做的目的就是为了允许用户取消不确定或者错误的操作，能够恢复到他原先的状态，使得他有”后悔药”可吃。通过一个备忘录类专门存储对象状态。客户不与备忘录类耦合，与备忘录管理类耦合。</p>
+<h1 id="备忘录模式UML"><a href="#备忘录模式UML" class="headerlink" title="备忘录模式UML"></a>备忘录模式UML</h1><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzjzi674u6j30iw06omxu.jpg" alt="uml"></p>
+<h2 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h2><p>Caretaker类是指用于保存(createMemento())和还原(restore(memento))发起方内部状态的Originator类。<br>发起方类实现<br>（1）createMemento()，通过创建和返回存储发起方当前内部状态的memento对象<br>（2）通过从传入的memento对象还原状态来还原(memento)。</p>
+<h2 id="UML时序图"><a href="#UML时序图" class="headerlink" title="UML时序图"></a>UML时序图</h2><p>（1）保存发起人的内部状态：Caretaker对Originator调用createMemento()，创建memento对象，保存其当前内部状态(setState())，并将memento返回给Caretaker。</p>
+<p>（2）恢复发起人的内部状态：Caretaker对Originator调用restore(memento)，并指定存储应恢复状态的memento对象。发起者从memento获取状态(getState())以设置其自己的状态。</p>
+<h1 id="备忘录模式角色结构"><a href="#备忘录模式角色结构" class="headerlink" title="备忘录模式角色结构"></a>备忘录模式角色结构</h1><p>(1) 备忘录（Memento）角色：备忘录角色存储“备忘发起角色”的内部状态。“备忘发起角色”根据需要决定备忘录角色存储“备忘发起角色”的哪些内部状态。为了防止“备忘发起角色”以外的其他对象访问备忘录。备忘录实际上有两个接口，“备忘录管理者角色”只能看到备忘录提供的窄接口——对于备忘录角色中存放的属性是不可见的。“备忘发起角色”则能够看到一个宽接口——能够得到自己放入备忘录角色中属性。</p>
+<p>(2) 备忘发起（Originator）角色：“备忘发起角色”创建一个备忘录，用以记录当前时刻它的内部状态。在需要时使用备忘录恢复内部状态。</p>
+<p>(3) 备忘录管理者（Caretaker）角色：负责保存好备忘录。不能对备忘录的内容进行操作或检查。</p>
+<h1 id="干货示例"><a href="#干货示例" class="headerlink" title="干货示例"></a>干货示例</h1><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RhbW9uQ2hvdy9kZXNpZ25fcGF0dGVybi90cmVlL21hc3Rlci9tZW1lbnRv" title="https://github.com/DamonChow/design_pattern/tree/master/memento">源码地址<i class="fa fa-external-link"></i></span></p>
+<div class="tabs" id=""><ul class="nav-tabs"><li class="tab active"><a href="#-1">Caretaker</a></li><li class="tab"><a href="#-2">Originator</a></li><li class="tab"><a href="#-3">Memento</a></li></ul><div class="tab-content"><div class="tab-pane active" id="-1"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Caretaker</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">​    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">​        List&lt;Memento&gt; savedStates = <span class="keyword">new</span> ArrayList();</span><br><span class="line">​        Originator originator = <span class="keyword">new</span> Originator();</span><br><span class="line">​        originator.set(<span class="string">“State1”</span>);</span><br><span class="line">​        originator.set(<span class="string">“State2”</span>);</span><br><span class="line">​        savedStates.add(originator.saveToMemento());</span><br><span class="line"></span><br><span class="line">​        originator.set(<span class="string">“State3”</span>);</span><br><span class="line">​        savedStates.add(originator.saveToMemento());</span><br><span class="line"></span><br><span class="line">​        originator.set(<span class="string">“State4”</span>);</span><br><span class="line">​        originator.restoreFromMemento(savedStates.get(<span class="number">1</span>));</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Originator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">​    <span class="comment">//状态更改</span></span><br><span class="line">​    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">​        <span class="keyword">this</span>.state = state;</span><br><span class="line">​        log.info(<span class="string">“Originator: Setting state to &#123;&#125;”</span>, state);</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    <span class="comment">//将状态保存到备忘录里</span></span><br><span class="line">​    <span class="function"><span class="keyword">public</span> Memento <span class="title">saveToMemento</span><span class="params">()</span> </span>&#123;</span><br><span class="line">​        log.info(<span class="string">“Originator: Saving to Memento.”</span>);</span><br><span class="line">​        <span class="keyword">return</span> <span class="keyword">new</span> Memento(<span class="keyword">this</span>.state);</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    <span class="comment">//从备忘录里取出状态并回滚</span></span><br><span class="line">​    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreFromMemento</span><span class="params">(Memento memento)</span> </span>&#123;</span><br><span class="line">​        <span class="keyword">this</span>.state = memento.getState();</span><br><span class="line">​        log.info(<span class="string">“Originator: State after restoring from Memento: &#123;&#125;”</span>, state);</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="-3"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memento</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">​    <span class="comment">//状态维护</span></span><br><span class="line">​    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></div></div>
+<p>示例结果</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk24eet38j3258090gof.jpg" alt="image-20190126161658817"></p>
+<p>从上述代码中看的出，随着状态变更，用List维护发起者的状态列表，从备忘录中取出状态以便回退状态。</p>
+<h1 id="java中的使用"><a href="#java中的使用" class="headerlink" title="java中的使用"></a>java中的使用</h1><p>生成对象状态的一个快照，以便对象可以恢复原始状态而不用暴露自身的内容。Date对象通过自身内部的一个long值来实现备忘录模式。</p>
+<p>java.util.Date</p>
+<p>java.io.Serializable</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h2><p> 1、给用户提供了一种可以恢复状态的机制，可以使用户能够比较方便地回到某个历史的状态。 2、实现了信息的封装，使得用户不需要关心状态的保存细节。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a><strong>缺点</strong></h2><p>消耗资源。如果类的成员变量过多，势必会占用比较大的资源，而且每一次保存都会消耗一定的内存。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a><strong>使用场景</strong></h2><p>1、需要保存/恢复数据的相关状态场景。 2、提供一个可回滚的操作。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>1、为了符合迪米特原则，还要增加一个管理备忘录的类。 2、为了节约内存，可使用原型模式+备忘录模式。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><span class="exturl" data-url="aHR0cDovL3d3dy5ydW5vb2IuY29tL2Rlc2lnbi1wYXR0ZXJuL21lbWVudG8tcGF0dGVybi5odG1s" title="http://www.runoob.com/design-pattern/memento-pattern.html">备忘录模式|菜鸟教程<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWVtZW50b19wYXR0ZXJu" title="https://en.wikipedia.org/wiki/Memento_pattern">Memento pattern<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdGlueWtpbmcvcC81OTM4NTQ3Lmh0bWw=" title="https://www.cnblogs.com/tinyking/p/5938547.html">细数JDK里的设计模式<i class="fa fa-external-link"></i></span></p>
 
       
     </div>
@@ -681,7 +644,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://damonchow.github.io/2019/01/17/annual-personal-report/" title="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">http://damonchow.github.io/2019/01/17/annual-personal-report/</a>
+    <a href="http://damonchow.github.io/2019/01/26/design-pattern-memento/" title="折腾Java设计模式之备忘录模式">http://damonchow.github.io/2019/01/26/design-pattern-memento/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -701,8 +664,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/15/design-pattern-mediator/" rel="next" title="折腾Java设计模式之中介者模式">
-                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之中介者模式
+              <a href="/2019/01/24/design-pattern-observer/" rel="next" title="折腾Java设计模式之观察者模式">
+                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之观察者模式
               </a>
             
           </div>
@@ -710,10 +673,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/24/design-pattern-observer/" rel="prev" title="折腾Java设计模式之观察者模式">
-                折腾Java设计模式之观察者模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -938,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#截取文本"><span class="nav-number">1.</span> <span class="nav-text">截取文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造随机因子"><span class="nav-number">2.</span> <span class="nav-text">构造随机因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始第一次截取"><span class="nav-number">3.</span> <span class="nav-text">开始第一次截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#努力第二次截取"><span class="nav-number">4.</span> <span class="nav-text">努力第二次截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终绞尽脑汁的截取"><span class="nav-number">5.</span> <span class="nav-text">最终绞尽脑汁的截取</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录模式"><span class="nav-number">1.</span> <span class="nav-text">备忘录模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录模式UML"><span class="nav-number">2.</span> <span class="nav-text">备忘录模式UML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UML类图"><span class="nav-number">2.1.</span> <span class="nav-text">UML类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML时序图"><span class="nav-number">2.2.</span> <span class="nav-text">UML时序图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录模式角色结构"><span class="nav-number">3.</span> <span class="nav-text">备忘录模式角色结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#干货示例"><span class="nav-number">4.</span> <span class="nav-text">干货示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java中的使用"><span class="nav-number">5.</span> <span class="nav-text">java中的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">6.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">6.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">6.3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">6.4.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

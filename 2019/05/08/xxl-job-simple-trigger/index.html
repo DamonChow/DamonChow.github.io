@@ -101,17 +101,22 @@
 
 
 
-  <meta name="description" content="折腾折腾, 多看看, 多写写">
-<meta name="keywords" content="微服务, 分布式, Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大萌小路">
-<meta property="og:url" content="http://damonchow.github.io/archives/2019/page/2/index.html">
+  <meta name="description" content="业务场景需求上要求能实现quartz的simpleTrigger任务，同时还需要动态的创建任务而非在控制面板上创建，查阅xxl-job官方文档发现simpelTrigger其暂时还躺在to do list，而动态创建可以调用JobInfoController其add和start接口(但是有个弊端，start/stop/remove等方法都只要求传送id，这点上可以自己扩展">
+<meta name="keywords" content="定时任务,分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对xxl-job进行simpleTrigger并动态创建任务扩展">
+<meta property="og:url" content="http://damonchow.github.io/2019/05/08/xxl-job-simple-trigger/index.html">
 <meta property="og:site_name" content="大萌小路">
-<meta property="og:description" content="折腾折腾, 多看看, 多写写">
+<meta property="og:description" content="业务场景需求上要求能实现quartz的simpleTrigger任务，同时还需要动态的创建任务而非在控制面板上创建，查阅xxl-job官方文档发现simpelTrigger其暂时还躺在to do list，而动态创建可以调用JobInfoController其add和start接口(但是有个弊端，start/stop/remove等方法都只要求传送id，这点上可以自己扩展">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g2u09no7d3j327i0lgadt.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g2u0d5qhm3j32800qsn1c.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g2u0dkqcvqj327q0rmn34.jpg">
+<meta property="og:updated_time" content="2019-05-08T08:56:03.461Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大萌小路">
-<meta name="twitter:description" content="折腾折腾, 多看看, 多写写">
+<meta name="twitter:title" content="对xxl-job进行simpleTrigger并动态创建任务扩展">
+<meta name="twitter:description" content="业务场景需求上要求能实现quartz的simpleTrigger任务，同时还需要动态的创建任务而非在控制面板上创建，查阅xxl-job官方文档发现simpelTrigger其暂时还躺在to do list，而动态创建可以调用JobInfoController其add和start接口(但是有个弊端，start/stop/remove等方法都只要求传送id，这点上可以自己扩展">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g2u09no7d3j327i0lgadt.jpg">
 
 
 
@@ -120,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/archives/2019/page/2/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/05/08/xxl-job-simple-trigger/">
 
 
 
@@ -130,7 +135,7 @@
   };
 </script>
 
-  <title>归档 | 大萌小路</title>
+  <title>对xxl-job进行simpleTrigger并动态创建任务扩展 | 大萌小路</title>
   
 
 
@@ -188,7 +193,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -277,7 +282,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -390,251 +395,337 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/05/08/xxl-job-simple-trigger/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Damon">
+      <meta itemprop="description" content="折腾折腾, 多看看, 多写写">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大萌小路">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">对xxl-job进行simpleTrigger并动态创建任务扩展
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-08 15:37:48 15:37:48" itemprop="dateCreated datePublished" datetime="2019-05-08T15:37:48+08:00">2019-05-08 15:37:48</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-08 16:56:03 16:56:03" itemprop="dateModified" datetime="2019-05-08T16:56:03+08:00">2019-05-08 16:56:03</time>
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 20 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/08/xxl-job-simple-trigger/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/05/08/xxl-job-simple-trigger/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note info">
+            <h2 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h2><p>需求上要求能实现quartz的simpleTrigger任务，同时还需要动态的创建任务而非在控制面板上创建，查阅xxl-job官方文档发现simpelTrigger其暂时还躺在to do list，而动态创建可以调用<code>JobInfoController</code>其add和start接口(但是有个弊端，start/stop/remove等方法都只要求传送id，这点上可以自己扩展接口实现)，还需要放开登录权限，接下来就老夫上去就上一梭子，开干。</p>
           </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/10/design-pattern-interpreter/" itemprop="url">
-            
-              <span itemprop="name">折腾Java设计模式之解释器模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-10T11:01:10+08:00" content="2019-01-10 11:01:10">
-          01-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+<a id="more"></a>
+<h2 id="job-info字段调整说明"><a href="#job-info字段调整说明" class="headerlink" title="job_info字段调整说明"></a>job_info字段调整说明</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`XXL_JOB_QRTZ_TRIGGER_INFO`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`job_group`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'执行器主键ID'</span>,</span><br><span class="line">  <span class="string">`job_cron`</span> <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'任务执行CRON'</span>,</span><br><span class="line">  <span class="string">`job_desc`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`add_time`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`update_time`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`author`</span> <span class="built_in">varchar</span>(<span class="number">64</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'作者'</span>,</span><br><span class="line">  <span class="string">`alarm_email`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'报警邮件'</span>,</span><br><span class="line">  <span class="string">`executor_route_strategy`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'执行器路由策略'</span>,</span><br><span class="line">  <span class="string">`executor_handler`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'执行器任务handler'</span>,</span><br><span class="line">  <span class="string">`executor_param`</span> <span class="built_in">varchar</span>(<span class="number">512</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'执行器任务参数'</span>,</span><br><span class="line">  <span class="string">`executor_block_strategy`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'阻塞处理策略'</span>,</span><br><span class="line">  <span class="string">`executor_timeout`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'任务执行超时时间，单位秒'</span>,</span><br><span class="line">  <span class="string">`executor_fail_retry_count`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'失败重试次数'</span>,</span><br><span class="line">  <span class="string">`glue_type`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'GLUE类型'</span>,</span><br><span class="line">  <span class="string">`glue_source`</span> mediumtext <span class="keyword">COMMENT</span> <span class="string">'GLUE源代码'</span>,</span><br><span class="line">  <span class="string">`glue_remark`</span> <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'GLUE备注'</span>,</span><br><span class="line">  <span class="string">`glue_updatetime`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'GLUE更新时间'</span>,</span><br><span class="line">  <span class="string">`child_jobid`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'子任务ID，多个逗号分隔'</span>,</span><br><span class="line">  <span class="string">`ext_reamrk`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`job_start_time`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'trigger开始时间于当前时间的时间间隔 单位毫秒\n'</span>,</span><br><span class="line">  <span class="string">`job_end_time`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'trigger结束时间'</span>,</span><br><span class="line">  <span class="string">`job_repeat_count`</span> <span class="built_in">bigint</span>(<span class="number">7</span>) <span class="keyword">DEFAULT</span> <span class="string">'-1'</span> <span class="keyword">COMMENT</span> <span class="string">'simple_trigger 执行次数 '</span>,</span><br><span class="line">  <span class="string">`job_repeat_interval`</span> <span class="built_in">bigint</span>(<span class="number">12</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'simple_trigger 时间间隔 单位毫秒'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">4</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>job_cron设为空，支持simpleTrigger；</li>
+<li>ext_reamrk自定义扩展字段，可以根据它来刷选job从而避免start/stop/remove接口只有id作为参数；</li>
+<li>job_repeat_count，simplerTrigger的执行次数，默认-1即为无限次，0的话是执行1次；</li>
+<li>job_repeat_interval，simplerTrigger每次执行的时间间隔，单位毫秒；</li>
+<li>job_start_time，trigger开始时间和当前时间的时间间隔，单位毫秒；</li>
+<li>job_end_time，trigger结束时间</li>
+</ul>
+<h2 id="重写启动任务"><a href="#重写启动任务" class="headerlink" title="重写启动任务"></a>重写启动任务</h2><p>xxl-job在新建任务的时候只是把job数据保存到数据库里，只有启动的时候才会创建<code>jobDetail</code>和<code>trigger</code>并由<code>scheduler</code>来启动job。</p>
+<p>重写<code>XxlJobDynamicScheduler</code>的<code>addJob</code>方法：根据jobInfo中的值构建cron的trigger还是simple的trigger。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">addJob</span><span class="params">(XxlJobInfo xxlJobInfo)</span> <span class="keyword">throws</span> SchedulerException </span>&#123;</span><br><span class="line">        String jobName = String.valueOf(xxlJobInfo.getId());</span><br><span class="line">        String cronExpression = xxlJobInfo.getJobCron();</span><br><span class="line">        Integer jobRepeatCount = xxlJobInfo.getJobRepeatCount();</span><br><span class="line">        Long jobRepeatInterval = xxlJobInfo.getJobRepeatInterval();</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// 1、job key</span></span><br><span class="line">        TriggerKey triggerKey = TriggerKey.triggerKey(jobName);</span><br><span class="line">        JobKey jobKey = <span class="keyword">new</span> JobKey(jobName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、valid trigger</span></span><br><span class="line">        <span class="keyword">if</span>(scheduler.checkExists(triggerKey)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.1、corn trigger</span></span><br><span class="line">        Trigger trigger = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(cronExpression)) &#123;</span><br><span class="line">            CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression).withMisfireHandlingInstructionDoNothing();   <span class="comment">// withMisfireHandlingInstructionDoNothing 忽略掉调度终止过程中忽略的调度</span></span><br><span class="line">            TriggerBuilder&lt;CronTrigger&gt; builder = TriggerBuilder.newTrigger().withIdentity(triggerKey)</span><br><span class="line">                    .withSchedule(cronScheduleBuilder)</span><br><span class="line">                    .endAt(xxlJobInfo.getJobEndTime());</span><br><span class="line">            Optional.ofNullable(xxlJobInfo.getJobStartTime())</span><br><span class="line">                    .ifPresent(start -&gt; builder.startAt(<span class="keyword">new</span> Date(System.currentTimeMillis() + start)));</span><br><span class="line">            trigger = builder.build();</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">        <span class="comment">// 3.2、simple trigger</span></span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(jobRepeatInterval) &amp;&amp; Objects.nonNull(jobRepeatCount)) &#123;</span><br><span class="line">            SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule()</span><br><span class="line">                    .withIntervalInMilliseconds(jobRepeatInterval)</span><br><span class="line">                    .withRepeatCount(jobRepeatCount);</span><br><span class="line">            TriggerBuilder&lt;SimpleTrigger&gt; builder = TriggerBuilder.newTrigger().withIdentity(triggerKey)</span><br><span class="line">                    .withSchedule(simpleScheduleBuilder)</span><br><span class="line">                    .endAt(xxlJobInfo.getJobEndTime());</span><br><span class="line">            Optional.ofNullable(xxlJobInfo.getJobStartTime())</span><br><span class="line">                    .ifPresent(start -&gt; builder.startAt(<span class="keyword">new</span> Date(System.currentTimeMillis() + start)));</span><br><span class="line">            trigger = builder.build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3.3、valid trigger</span></span><br><span class="line">        <span class="keyword">if</span>(Objects.isNull(trigger)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、job detail</span></span><br><span class="line">		Class&lt;? extends Job&gt; jobClass_ = RemoteHttpJobBean.class;   <span class="comment">// Class.forName(jobInfo.getJobClass());</span></span><br><span class="line">		JobDetail jobDetail = JobBuilder.newJob(jobClass_).withIdentity(jobKey).build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*if (jobInfo.getJobData()!=null) &#123;</span></span><br><span class="line"><span class="comment">        	JobDataMap jobDataMap = jobDetail.getJobDataMap();</span></span><br><span class="line"><span class="comment">        	jobDataMap.putAll(JacksonUtil.readValue(jobInfo.getJobData(), Map.class));	</span></span><br><span class="line"><span class="comment">        	// JobExecutionContext context.getMergedJobDataMap().get("mailGuid");</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 5、schedule job</span></span><br><span class="line">        Date date = scheduler.scheduleJob(jobDetail, trigger);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; addJob success(quartz), jobDetail:&#123;&#125;, trigger:&#123;&#125;, date:&#123;&#125;"</span>, jobDetail, trigger, date);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g2u09no7d3j327i0lgadt.jpg" alt="img"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g2u0d5qhm3j32800qsn1c.jpg" alt="image-20190508165249933"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g2u0dkqcvqj327q0rmn34.jpg" alt="image-20190508165315058"></p>
+<p>可以看到将数据库里3任务改为间隔3秒，job_repeat_count为1，任务实际会执行2次。</p>
+<h2 id="额外的工作"><a href="#额外的工作" class="headerlink" title="额外的工作"></a>额外的工作</h2><ol>
+<li>虽然支持cron或simple，但是在控制台节目只能维护cron的trigger，并且优先cron，同时cron设为可以为空，但是管理平台上没有simple的相关数据，如果需要的话要重新修改对应的页面和add和update的逻辑；</li>
+<li>job状态取的是trigger的状态，所以可能看到的是simpleTrigger的状态。</li>
+<li>目前job的trigger是在cron和simple中二者取一，但是也可以扩展启动任务的方法，使其支持扩展多trigger，但是triggerKey需要重新定义而非取jobName（因为trigger的hash是triggerKey的hash），本身xxl-job的jobKey取的是job的id，triggerKey取的也是job的id，没有使用到groupName。</li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/07/design-pattern-visitor/" itemprop="url">
-            
-              <span itemprop="name">折腾Java设计模式之访问者模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-07T15:15:31+08:00" content="2019-01-07 15:15:31">
-          01-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/05/principles-of-software-design-patterns/" itemprop="url">
-            
-              <span itemprop="name">软件设计模式原则</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-05T10:07:39+08:00" content="2019-01-05 10:07:39">
-          01-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/02/design-pattern-iterator/" itemprop="url">
-            
-              <span itemprop="name">折腾Java设计模式之迭代器模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-02T21:31:13+08:00" content="2019-01-02 21:31:13">
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/02/design-pattern-command/" itemprop="url">
-            
-              <span itemprop="name">折腾Java设计模式之命令模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-02T09:58:03+08:00" content="2019-01-02 09:58:03">
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/qrcode_wechat.jpg" alt="Damon wechat" style="width: 200px; max-width: 100%;">
+  <div>同步在个人微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+
+    
+      <div id="bitcoin" style="display: inline-block">
+        <img id="bitcoin_qr" src="/images/btc.png" alt="Damon 比特币">
+        <p>比特币</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Damon</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://damonchow.github.io/2019/05/08/xxl-job-simple-trigger/" title="对xxl-job进行simpleTrigger并动态创建任务扩展">http://damonchow.github.io/2019/05/08/xxl-job-simple-trigger/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/定时任务/" rel="tag"><i class="fa fa-tag"></i> 定时任务</a>
+          
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/design-pattern-singleton/" rel="next" title="折腾Java设计模式之单例模式">
+                <i class="fa fa-chevron-left"></i> 折腾Java设计模式之单例模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -655,8 +746,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -823,6 +923,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#业务场景"><span class="nav-number">1.</span> <span class="nav-text">业务场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#job-info字段调整说明"><span class="nav-number">2.</span> <span class="nav-text">job_info字段调整说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重写启动任务"><span class="nav-number">3.</span> <span class="nav-text">重写启动任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">4.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#额外的工作"><span class="nav-number">5.</span> <span class="nav-text">额外的工作</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1032,6 +1149,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -1041,6 +1162,8 @@
 
 
   
+  
+
 
 
 

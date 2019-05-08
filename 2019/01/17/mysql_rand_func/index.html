@@ -105,7 +105,7 @@
 <meta name="keywords" content="微服务, 分布式, Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">
-<meta property="og:url" content="http://damonchow.github.io/2019/01/17/annual-personal-report/index.html">
+<meta property="og:url" content="http://damonchow.github.io/2019/01/17/mysql_rand_func/index.html">
 <meta property="og:site_name" content="大萌小路">
 <meta property="og:description" content="场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。">
 <meta property="og:locale" content="zh-CN">
@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fz9l70jwg2j30zy0nydzb.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fz9lojw8glj31rm0okadq.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fz9lqsx0q6j312p0u0e56.jpg">
-<meta property="og:updated_time" content="2019-01-17T07:17:04.079Z">
+<meta property="og:updated_time" content="2019-04-15T01:58:07.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">
 <meta name="twitter:description" content="场景：临近年底，各个App都会有个人年度账单，项目里为了图快，以及节省各个系统模块之间的接口联调。直接人工统计数据（😳😳😳😳😳😳😳😳😳😳😳😳😳😳），构造账单数据JSON。">
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2019/01/17/annual-personal-report/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/01/17/mysql_rand_func/">
 
 
 
@@ -417,7 +417,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/17/annual-personal-report/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/01/17/mysql_rand_func/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -477,7 +477,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-17 15:17:04 15:17:04" itemprop="dateModified" datetime="2019-01-17T15:17:04+08:00">2019-01-17 15:17:04</time>
+                <time title="修改时间：2019-04-15 09:58:07 09:58:07" itemprop="dateModified" datetime="2019-04-15T09:58:07+08:00">2019-04-15 09:58:07</time>
               
             
           </span>
@@ -509,8 +509,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/17/annual-personal-report/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/annual-personal-report/" itemprop="commentCount"></span>
+                <a href="/2019/01/17/mysql_rand_func/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/mysql_rand_func/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -578,7 +578,7 @@
           </div>
 <a id="more"></a>
 <p>话不多说，老夫拿起键盘就是干。</p>
-<p>五毒有欧，数据俺不九班的由其他各个系统小组提供，但是有些数据是随机生成的一些描述性的文本，而该文本从固定的文本数组而来。前端展示效果又要将随机文本拆成几个部分来。</p>
+<p>无独有偶，数据按部就班的由其他各个系统小组提供，但是有些数据是随机生成的一些描述性的文本，而该文本从固定的文本数组而来。前端展示效果又要将随机文本拆成几个部分来。</p>
 <p>正常的sql拼接成json还方便。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONCAT('\"app\":&#123;\"time\":\"', DATE_FORMAT(time, "%Y-%m-%d %T"), '\",\"days\":', days, </span><br><span class="line">case when typeTime is null then '' else CONCAT(',\"typeTime\":\"', DATE_FORMAT(typeTime, "%Y-%m-%d %T"), '\"') <span class="keyword">end</span>,<span class="string">'&#125;'</span>)</span><br></pre></td></tr></table></figure>
 <p>随机文本来了</p>
@@ -594,24 +594,24 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-floor(rand()*7+1)</span><br></pre></td></tr></table></figure>
 <p>取随机范围内的值可以参考这个公式</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLOOR(start_num + RAND() * (end_num - start_num + 1))</span><br></pre></td></tr></table></figure>
-<h2 id="开始第一次截取"><a href="#开始第一次截取" class="headerlink" title="开始第一次截取"></a>开始第一次截取</h2><p>随机串截取方法有了，随机数也有了，开干。</p>
+<h2 id="第一次截取，每次随机"><a href="#第一次截取，每次随机" class="headerlink" title="第一次截取，每次随机"></a>第一次截取，每次随机</h2><p>随机串截取方法有了，随机数也有了，开干。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id, <span class="keyword">CONCAT</span>(<span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,-<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>)),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,-<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>)),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> <span class="keyword">data</span>;</span><br></pre></td></tr></table></figure>
 <p>结果发现对不上啊，【责任担当】应该对应【先天下之忧而忧,后天下之乐而乐】，而结果出现部分对应到【再美的气质，也掩盖不了你才华本质】<img src="https://ws3.sinaimg.cn/large/006tNc79gy1fz9ku49r3tj30uu0gi7gf.jpg" alt="img"></p>
-<h2 id="努力第二次截取"><a href="#努力第二次截取" class="headerlink" title="努力第二次截取"></a>努力第二次截取</h2><p>这次考虑到上回我们是把随机因子放在sql里没句话里，所以每次都执行了2次，生成是随机因子就不一样了，截取的结果就对应不上，那，我们先在子查询里先把随机因子生成后，再在外层用这个随机因子这下应该不一样了把。</p>
+<h2 id="第二次截取，先一次随机两次用"><a href="#第二次截取，先一次随机两次用" class="headerlink" title="第二次截取，先一次随机两次用"></a>第二次截取，先一次随机两次用</h2><p>这次考虑到上回我们是把随机因子放在每个字段sql里，所以每次都执行了2次，生成是随机因子就不一样了，截取的结果就对应不上，那，我们先在子查询里先把随机因子生成后，再在外层用这个随机因子这下应该不一样了把。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, <span class="keyword">CONCAT</span>(<span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span>) temp</span><br></pre></td></tr></table></figure>
 <p>吐血的图片在查找中，从开头看就看的出来，对应不上啦，前几个就前部对应【爱笑的你运气一定不会差】，爱笑的我，运气就是这么差。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fz9l1didszj313g0qedmh.jpg" alt="image-20190117145010072"></p>
 <p>改变下语句把随机因子打印出来</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, desc_index, <span class="keyword">CONCAT</span>(desc_index, <span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span>) temp</span><br></pre></td></tr></table></figure>
-<p><strong><em>**</em></strong>，前面这些打星号的，都是脏话，忽略它，随机因子，明明在子查询都生成了，为毛还是不一样。</p>
+<p><strong>WTF</strong>，随机因子，明明在子查询都生成了，为毛还是不一样。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fz9l70jwg2j30zy0nydzb.jpg" alt="image-20190117145539095"></p>
-<h2 id="最终绞尽脑汁的截取"><a href="#最终绞尽脑汁的截取" class="headerlink" title="最终绞尽脑汁的截取"></a>最终绞尽脑汁的截取</h2><p>本想在子查询中使用rand()把随机因子可以搞出来，哪成想，在外层的查询时rand()又TMM的重算了一遍。</p>
+<h2 id="来自官方大佬的截取"><a href="#来自官方大佬的截取" class="headerlink" title="来自官方大佬的截取"></a>来自官方大佬的截取</h2><p>本想在子查询中使用rand()把随机因子可以搞出来，哪成想，在外层的查询时rand()又重算了一遍。</p>
 <p>一顿参考一顿找资料，偶然间发现了问题所在</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9idWdzLm15c3FsLmNvbS9idWcucGhwP2lkPTg2NjI0" title="https://bugs.mysql.com/bug.php?id=86624">Mysql尽然有这样的bug<i class="fa fa-external-link"></i></span>  </p>
 <p>2017年有个哥们提了这样的一个issue，就是上面的链接。</p>
 <p>里面说了一些情况，在mysql5.6里，随机数是一样的，5.7里随机数不一样。如果子查询里不使用表，随机数也是一样。刚刚好mysql就是5.7，刚刚好中招了。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fz9lojw8glj31rm0okadq.jpg" alt="image-20190117151229364"></p>
-<p>根据作者和Roy Lyseng的建议，我用limit，没想到，尽然阔以啦，老泪纵横啊。</p>
+<p>根据ISSUE作者和Roy Lyseng的建议，我用limit，没想到，尽然阔以啦，老泪纵横啊。</p>
 <p>还是老外好，成功的解决方案，也会在issue里说明下的。</p>
 <p>改造后的最终样子。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> temp.user_id, desc_index, <span class="keyword">CONCAT</span>(desc_index, <span class="string">'\"desc\": &#123;\"label\":\"'</span>, </span><br><span class="line">substring_index(substring_index(<span class="string">'学富五车;足智多谋;仗义执言;火眼金睛;见多识广;责任担当;乐观积极'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),<span class="string">'\"'</span>,</span><br><span class="line"><span class="string">',\"description\": \"'</span>, substring_index(substring_index(<span class="string">'再美的气质，也掩盖不了你才华本质;脑力使用积极分子，非你莫属;你的见解，面面俱到，深入人心;独特的洞察力，总能获悉一切;最美的阅历，就是沿路的风景;先天下之忧而忧,后天下之乐而乐;爱笑的你运气一定不会差'</span>,<span class="string">';'</span>,temp.desc_index),<span class="string">';'</span>,<span class="number">1</span>),</span><br><span class="line"><span class="string">'\"&#125;'</span></span><br><span class="line">) <span class="keyword">as</span> report_content <span class="keyword">from</span> (<span class="keyword">select</span> user_id, -<span class="keyword">FLOOR</span>(<span class="keyword">rand</span>()*<span class="number">7</span>+<span class="number">1</span>) <span class="keyword">as</span> desc_index <span class="keyword">from</span> <span class="keyword">data</span> <span class="keyword">limit</span> <span class="number">100000</span>) temp</span><br></pre></td></tr></table></figure>
@@ -681,7 +681,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://damonchow.github.io/2019/01/17/annual-personal-report/" title="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">http://damonchow.github.io/2019/01/17/annual-personal-report/</a>
+    <a href="http://damonchow.github.io/2019/01/17/mysql_rand_func/" title="Mysql我是怎么随机截取字符数组里的字符串并且一一对应">http://damonchow.github.io/2019/01/17/mysql_rand_func/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -789,7 +789,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -857,7 +857,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -870,7 +872,7 @@
                     <h3 class="widget-title">标签云</h3>
                     <div id="myCanvasContainer" class="widget tagcloud">
                         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中介者/">中介者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建造者/">建造者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板方法/">模板方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者/">观察者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
+                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中介者/">中介者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/定时任务/">定时任务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建造者/">建造者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板方法/">模板方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者/">观察者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
                         </canvas>
                     </div>
                 </div>
@@ -948,7 +950,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#截取文本"><span class="nav-number">1.</span> <span class="nav-text">截取文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造随机因子"><span class="nav-number">2.</span> <span class="nav-text">构造随机因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始第一次截取"><span class="nav-number">3.</span> <span class="nav-text">开始第一次截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#努力第二次截取"><span class="nav-number">4.</span> <span class="nav-text">努力第二次截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终绞尽脑汁的截取"><span class="nav-number">5.</span> <span class="nav-text">最终绞尽脑汁的截取</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#截取文本"><span class="nav-number">1.</span> <span class="nav-text">截取文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造随机因子"><span class="nav-number">2.</span> <span class="nav-text">构造随机因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次截取，每次随机"><span class="nav-number">3.</span> <span class="nav-text">第一次截取，每次随机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二次截取，先一次随机两次用"><span class="nav-number">4.</span> <span class="nav-text">第二次截取，先一次随机两次用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#来自官方大佬的截取"><span class="nav-number">5.</span> <span class="nav-text">来自官方大佬的截取</span></a></li></ol></div>
             
 
           </div>
@@ -989,7 +991,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">106k</span>
+    <span title="站点总字数">112k</span>
   
 
   
@@ -1000,7 +1002,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:36</span>
+    <span title="站点阅读时长">1:42</span>
   
 </div>
 

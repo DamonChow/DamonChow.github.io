@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4cbyvalczj30zy0u0765.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4cc115ck0j32fw07ajtz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4cc3zb27mj31g00f4myf.jpg">
-<meta property="og:updated_time" content="2019-06-24T08:47:01.591Z">
+<meta property="og:updated_time" content="2019-06-24T09:32:42.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debezium关于cdc的使用(上)">
 <meta name="twitter:description" content="简介debezium是一个为了捕获数据变更(cdc)的开源的分布式平台。启动并指向数据库，当其他应用对此数据库执行inserts、updates、delete操作时，此应用快速得到响应。debezium是持久化和快速响应的，因此你的应用可以快速响应且不会丢失任意一条事件。debezium记录是数据库表的行级别的变更事件。同时debezium是构建在kafka之上的，同时与">
@@ -479,7 +479,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-24 16:47:01 16:47:01" itemprop="dateModified" datetime="2019-06-24T16:47:01+08:00">2019-06-24 16:47:01</time>
+                <time title="修改时间：2019-06-24 17:32:42 17:32:42" itemprop="dateModified" datetime="2019-06-24T17:32:42+08:00">2019-06-24 17:32:42</time>
               
             
           </span>
@@ -584,39 +584,13 @@
 <p>mysql需要如下开启binlog。但是如果使用的是debezium/mysql镜像，自动已经配置好了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log-bin=mysql-bin #添加这一行就ok</span><br><span class="line">binlog-format=ROW #选择row模式</span><br><span class="line">server_id=1 #配置mysql replaction需要定义，不能和canal的slaveId重复</span><br></pre></td></tr></table></figure>
 <h2 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h2><p>先来一个效果，主要是配置kafka connector来获取debezium事件记录。需要3个服务，zookeeper、kakfa和debezium connector。这里使用docker来启动的，所以需要先按照docker。</p>
-<ul>
-<li><p>启动zookeeper</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 debezium/zookeeper:0.9</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>启动kafka</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name kafka -p 9092:9092 --link zookeeper:zookeeper debezium/kafka:0.9</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>启动mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:0.9</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>启动kafka connect</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPIC=my_connect_configs -e OFFSET_STORAGE_TOPIC=my_connect_offsets -e STATUS_STORAGE_TOPIC=my_connect_statuses --link zookeeper:zookeeper --link kafka:kafka --link mysql:mysql debezium/connect:0.9</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>通过connect的http请求创建debezium connector</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST -H &quot;Accept:application/json&quot; -H &quot;Content-Type:application/json&quot; localhost:8083/connectors/ -d &apos;&#123; &quot;name&quot;: &quot;inventory-connector&quot;, &quot;config&quot;: &#123; &quot;connector.class&quot;: &quot;io.debezium.connector.mysql.MySqlConnector&quot;, &quot;tasks.max&quot;: &quot;1&quot;, &quot;database.hostname&quot;: &quot;mysql&quot;, &quot;database.port&quot;: &quot;3306&quot;, &quot;database.user&quot;: &quot;debezium&quot;, &quot;database.password&quot;: &quot;dbz&quot;, &quot;database.server.id&quot;: &quot;184054&quot;, &quot;database.server.name&quot;: &quot;dbserver1&quot;, &quot;database.whitelist&quot;: &quot;inventory&quot;, &quot;database.history.kafka.bootstrap.servers&quot;: &quot;kafka:9092&quot;, &quot;database.history.kafka.topic&quot;: &quot;dbhistory.inventory&quot; &#125; &#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>通过mysql客户端操作<code>invertory</code>数据库了的任一表的数据</li>
-</ul>
-<ul>
-<li><p>创建监听可以查看debezium事件记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name watcher --rm --link zookeeper:zookeeper --link kafka:kafka debezium/kafka:0.9 watch-topic -a -k dbserver1.inventory.customers</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h3 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 debezium/zookeeper:0.9</span><br></pre></td></tr></table></figure>
+<h3 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name kafka -p 9092:9092 --link zookeeper:zookeeper debezium/kafka:0.9</span><br></pre></td></tr></table></figure>
+<h3 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:0.9</span><br></pre></td></tr></table></figure>
+<h3 id="启动kafka-connect"><a href="#启动kafka-connect" class="headerlink" title="启动kafka connect"></a>启动kafka connect</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPIC=my_connect_configs -e OFFSET_STORAGE_TOPIC=my_connect_offsets -e STATUS_STORAGE_TOPIC=my_connect_statuses --link zookeeper:zookeeper --link kafka:kafka --link mysql:mysql debezium/connect:0.9</span><br></pre></td></tr></table></figure>
+<h3 id="通过connect的http请求创建debezium-connector"><a href="#通过connect的http请求创建debezium-connector" class="headerlink" title="通过connect的http请求创建debezium connector"></a>通过connect的http请求创建debezium connector</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d '&#123; "name": "inventory-connector", "config": &#123; "connector.class": "io.debezium.connector.mysql.MySqlConnector", "tasks.max": "1", "database.hostname": "mysql", "database.port": "3306", "database.user": "debezium", "database.password": "dbz", "database.server.id": "184054", "database.server.name": "dbserver1", "database.whitelist": "inventory", "database.history.kafka.bootstrap.servers": "kafka:9092", "database.history.kafka.topic": "dbhistory.inventory" &#125; &#125;'</span><br></pre></td></tr></table></figure>
+<h3 id="mysql客户端操作"><a href="#mysql客户端操作" class="headerlink" title="mysql客户端操作"></a>mysql客户端操作</h3><p>通过<code>invertory</code>数据库了的任一表的数据</p>
+<h3 id="创建监听可以查看debezium事件记录"><a href="#创建监听可以查看debezium事件记录" class="headerlink" title="创建监听可以查看debezium事件记录"></a>创建监听可以查看debezium事件记录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name watcher --rm --link zookeeper:zookeeper --link kafka:kafka debezium/kafka:0.9 watch-topic -a -k dbserver1.inventory.customers</span><br></pre></td></tr></table></figure>
 <h2 id="内嵌式"><a href="#内嵌式" class="headerlink" title="内嵌式"></a>内嵌式</h2><p>这里主要使用内嵌式的方式获取cdc事件而不需要使用kafka，直接消费debezium事件流。场景是在某一个mysql数据库里的table发生变更，把变更同步到另一mysql数据库。本次使用的是监听<code>inventory</code>数据库并将数据同步到<code>inventory_back</code>。</p>
 <p>###debezium配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">connector.class=io.debezium.connector.mysql.MySqlConnector</span><br><span class="line">offset.storage=org.apache.kafka.connect.storage.FileOffsetBackingStore</span><br><span class="line">offset.storage.file.filename=offset.dat</span><br><span class="line">offset.flush.interval.ms=60000</span><br><span class="line"></span><br><span class="line">name=debezium-kafka-source</span><br><span class="line">database.hostname=localhost</span><br><span class="line">database.port=3306</span><br><span class="line">database.user=debezium</span><br><span class="line">database.password=dbz</span><br><span class="line">#database.dbname=inventory</span><br><span class="line">database.whitelist=inventory</span><br><span class="line">#database.whitelist=inventory,inventory_back</span><br><span class="line">server.id=184054</span><br><span class="line">database.server.name=dbserver1</span><br><span class="line">#transforms=unwrap</span><br><span class="line">#transforms.unwrap.type=io.debezium.transforms.UnwrapFromEnvelope</span><br><span class="line">#transforms.unwrap.drop.tombstones=false</span><br><span class="line"></span><br><span class="line">database.history=io.debezium.relational.history.FileDatabaseHistory</span><br><span class="line">database.history.file.filename=dbhistory.dat</span><br></pre></td></tr></table></figure>
@@ -1000,7 +974,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tutorial"><span class="nav-number">3.</span> <span class="nav-text">Tutorial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌式"><span class="nav-number">4.</span> <span class="nav-text">内嵌式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和convert配置"><span class="nav-number">4.1.</span> <span class="nav-text">属性和convert配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步DDL和DML"><span class="nav-number">4.2.</span> <span class="nav-text">同步DDL和DML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试表结构"><span class="nav-number">4.3.</span> <span class="nav-text">测试表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.4.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的update事件"><span class="nav-number">4.4.1.</span> <span class="nav-text">DML的update事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的delete事件"><span class="nav-number">4.4.2.</span> <span class="nav-text">DML的delete事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tutorial"><span class="nav-number">3.</span> <span class="nav-text">Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动zookeeper"><span class="nav-number">3.1.</span> <span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka"><span class="nav-number">3.2.</span> <span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mysql"><span class="nav-number">3.3.</span> <span class="nav-text">启动mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka-connect"><span class="nav-number">3.4.</span> <span class="nav-text">启动kafka connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过connect的http请求创建debezium-connector"><span class="nav-number">3.5.</span> <span class="nav-text">通过connect的http请求创建debezium connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql客户端操作"><span class="nav-number">3.6.</span> <span class="nav-text">mysql客户端操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建监听可以查看debezium事件记录"><span class="nav-number">3.7.</span> <span class="nav-text">创建监听可以查看debezium事件记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌式"><span class="nav-number">4.</span> <span class="nav-text">内嵌式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和convert配置"><span class="nav-number">4.1.</span> <span class="nav-text">属性和convert配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步DDL和DML"><span class="nav-number">4.2.</span> <span class="nav-text">同步DDL和DML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试表结构"><span class="nav-number">4.3.</span> <span class="nav-text">测试表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.4.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的update事件"><span class="nav-number">4.4.1.</span> <span class="nav-text">DML的update事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的delete事件"><span class="nav-number">4.4.2.</span> <span class="nav-text">DML的delete事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -1052,7 +1026,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:14</span>
+    <span title="站点阅读时长">2:13</span>
   
 </div>
 

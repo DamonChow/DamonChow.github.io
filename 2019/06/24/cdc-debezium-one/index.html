@@ -105,7 +105,7 @@
 <meta name="keywords" content="spring-boot,cdc,debezium,kafka,connector">
 <meta property="og:type" content="article">
 <meta property="og:title" content="debezium关于cdc的使用(上)">
-<meta property="og:url" content="http://damonchow.github.io/2019/06/24/debezium/index.html">
+<meta property="og:url" content="http://damonchow.github.io/2019/06/24/cdc-debezium-one/index.html">
 <meta property="og:site_name" content="大萌小路">
 <meta property="og:description" content="简介debezium是一个为了捕获数据变更(cdc)的开源的分布式平台。启动并指向数据库，当其他应用对此数据库执行inserts、updates、delete操作时，此应用快速得到响应。debezium是持久化和快速响应的，因此你的应用可以快速响应且不会丢失任意一条事件。debezium记录是数据库表的行级别的变更事件。同时debezium是构建在kafka之上的，同时与">
 <meta property="og:locale" content="zh-CN">
@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4cbyvalczj30zy0u0765.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4cc115ck0j32fw07ajtz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4cc3zb27mj31g00f4myf.jpg">
-<meta property="og:updated_time" content="2019-06-25T01:29:44.094Z">
+<meta property="og:updated_time" content="2019-08-07T02:04:53.015Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debezium关于cdc的使用(上)">
 <meta name="twitter:description" content="简介debezium是一个为了捕获数据变更(cdc)的开源的分布式平台。启动并指向数据库，当其他应用对此数据库执行inserts、updates、delete操作时，此应用快速得到响应。debezium是持久化和快速响应的，因此你的应用可以快速响应且不会丢失任意一条事件。debezium记录是数据库表的行级别的变更事件。同时debezium是构建在kafka之上的，同时与">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://damonchow.github.io/2019/06/24/debezium/">
+  <link rel="canonical" href="http://damonchow.github.io/2019/06/24/cdc-debezium-one/">
 
 
 
@@ -419,7 +419,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/06/24/debezium/">
+    <link itemprop="mainEntityOfPage" href="http://damonchow.github.io/2019/06/24/cdc-debezium-one/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Damon">
@@ -479,7 +479,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-25 09:29:44 09:29:44" itemprop="dateModified" datetime="2019-06-25T09:29:44+08:00">2019-06-25 09:29:44</time>
+                <time title="修改时间：2019-08-07 10:04:53 10:04:53" itemprop="dateModified" datetime="2019-08-07T10:04:53+08:00">2019-08-07 10:04:53</time>
               
             
           </span>
@@ -511,8 +511,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/24/debezium/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/debezium/" itemprop="commentCount"></span>
+                <a href="/2019/06/24/cdc-debezium-one/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/cdc-debezium-one/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -579,11 +579,11 @@
             <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>debezium是一个为了捕获数据变更(cdc)的开源的分布式平台。启动并指向数据库，当其他应用对此数据库执行<code>inserts</code>、<code>updates</code>、<code>delete</code>操作时，此应用快速得到响应。debezium是持久化和快速响应的，因此你的应用可以快速响应且不会丢失任意一条事件。debezium记录是数据库表的行级别的变更事件。同时debezium是构建在kafka之上的，同时与kafka深度耦合，所以提供kafka connector来使用，debezium sink。支持的数据库有mysql、MongoDB、PostgreSQL、Oracle、SQL server。本篇以mysql作为数据源来实现功能，监听msyql的binlog，还需要修改。当前版本是0.9.5.Final，0.10版本正在开发中。</p>
           </div>
 <a id="more"></a>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>本篇文章主要使用<code>Embedding</code>形式监听事件，并同步更新到数据库。</p>
-<p>下篇主要使用kafka connector来同步更新到数据库。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>本篇文章主要使用<code>Embedding</code>形式监听事件不借助MQ消息中间介，并同步更新到数据库。</p>
+<p>下篇主要使用<code>kafka connector</code>来同步更新到数据库。</p>
 <p>mysql需要如下开启binlog。但是如果使用的是debezium/mysql镜像，自动已经配置好了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log-bin=mysql-bin #添加这一行就ok</span><br><span class="line">binlog-format=ROW #选择row模式</span><br><span class="line">server_id=1 #配置mysql replaction需要定义，不能和canal的slaveId重复</span><br></pre></td></tr></table></figure>
-<h2 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h2><p>先来一个效果，主要是配置kafka connector来获取debezium事件记录。需要3个服务，zookeeper、kakfa和debezium connector。这里使用docker来启动的，所以需要先按照docker。</p>
+<h2 id="开胃菜"><a href="#开胃菜" class="headerlink" title="开胃菜"></a>开胃菜</h2><p>先来一个效果，主要是配置kafka connector来获取debezium事件记录。需要3个服务，zookeeper、kakfa和debezium connector。这里使用docker来启动的，所以需要先安装docker。</p>
 <h3 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 debezium/zookeeper:0.9</span><br></pre></td></tr></table></figure>
 <h3 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name kafka -p 9092:9092 --link zookeeper:zookeeper debezium/kafka:0.9</span><br></pre></td></tr></table></figure>
 <h3 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:0.9</span><br></pre></td></tr></table></figure>
@@ -680,7 +680,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://damonchow.github.io/2019/06/24/debezium/" title="debezium关于cdc的使用(上)">http://damonchow.github.io/2019/06/24/debezium/</a>
+    <a href="http://damonchow.github.io/2019/06/24/cdc-debezium-one/" title="debezium关于cdc的使用(上)">http://damonchow.github.io/2019/06/24/cdc-debezium-one/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -723,6 +723,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/cdc-debezium-two/" rel="prev" title="debezium关于cdc的使用(下)">
+                debezium关于cdc的使用(下) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -798,7 +802,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -893,7 +897,7 @@
                     <h3 class="widget-title">标签云</h3>
                     <div id="myCanvasContainer" class="widget tagcloud">
                         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdc/">cdc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/connector/">connector</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debezium/">debezium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring-boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中介者/">中介者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/定时任务/">定时任务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建造者/">建造者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板方法/">模板方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者/">观察者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
+                            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XA/">XA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdc/">cdc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/connector/">connector</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debezium/">debezium</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring-boot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中介者/">中介者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/定时任务/">定时任务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建造者/">建造者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板方法/">模板方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/状态/">状态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/策略/">策略</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观察者/">观察者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问者/">访问者</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/责任链/">责任链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a><span class="tag-list-count">1</span></li></ul>
                         </canvas>
                     </div>
                 </div>
@@ -971,7 +975,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tutorial"><span class="nav-number">3.</span> <span class="nav-text">Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动zookeeper"><span class="nav-number">3.1.</span> <span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka"><span class="nav-number">3.2.</span> <span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mysql"><span class="nav-number">3.3.</span> <span class="nav-text">启动mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka-connect"><span class="nav-number">3.4.</span> <span class="nav-text">启动kafka connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过connect的http请求创建debezium-connector"><span class="nav-number">3.5.</span> <span class="nav-text">通过connect的http请求创建debezium connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql客户端操作"><span class="nav-number">3.6.</span> <span class="nav-text">mysql客户端操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建监听可以查看debezium事件记录"><span class="nav-number">3.7.</span> <span class="nav-text">创建监听可以查看debezium事件记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌式"><span class="nav-number">4.</span> <span class="nav-text">内嵌式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#debezium配置"><span class="nav-number">4.1.</span> <span class="nav-text">debezium配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和convert配置"><span class="nav-number">4.2.</span> <span class="nav-text">属性和convert配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步DDL和DML"><span class="nav-number">4.3.</span> <span class="nav-text">同步DDL和DML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试表结构"><span class="nav-number">4.4.</span> <span class="nav-text">测试表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.5.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDL事件"><span class="nav-number">4.5.1.</span> <span class="nav-text">DDL事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的insert事件"><span class="nav-number">4.5.2.</span> <span class="nav-text">DML的insert事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的update事件"><span class="nav-number">4.5.3.</span> <span class="nav-text">DML的update事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的delete事件"><span class="nav-number">4.5.4.</span> <span class="nav-text">DML的delete事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开胃菜"><span class="nav-number">3.</span> <span class="nav-text">开胃菜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动zookeeper"><span class="nav-number">3.1.</span> <span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka"><span class="nav-number">3.2.</span> <span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mysql"><span class="nav-number">3.3.</span> <span class="nav-text">启动mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动kafka-connect"><span class="nav-number">3.4.</span> <span class="nav-text">启动kafka connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过connect的http请求创建debezium-connector"><span class="nav-number">3.5.</span> <span class="nav-text">通过connect的http请求创建debezium connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql客户端操作"><span class="nav-number">3.6.</span> <span class="nav-text">mysql客户端操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建监听可以查看debezium事件记录"><span class="nav-number">3.7.</span> <span class="nav-text">创建监听可以查看debezium事件记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌式"><span class="nav-number">4.</span> <span class="nav-text">内嵌式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#debezium配置"><span class="nav-number">4.1.</span> <span class="nav-text">debezium配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和convert配置"><span class="nav-number">4.2.</span> <span class="nav-text">属性和convert配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步DDL和DML"><span class="nav-number">4.3.</span> <span class="nav-text">同步DDL和DML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试表结构"><span class="nav-number">4.4.</span> <span class="nav-text">测试表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.5.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDL事件"><span class="nav-number">4.5.1.</span> <span class="nav-text">DDL事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的insert事件"><span class="nav-number">4.5.2.</span> <span class="nav-text">DML的insert事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的update事件"><span class="nav-number">4.5.3.</span> <span class="nav-text">DML的update事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML的delete事件"><span class="nav-number">4.5.4.</span> <span class="nav-text">DML的delete事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -1012,7 +1016,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">147k</span>
+    <span title="站点总字数">153k</span>
   
 
   
@@ -1023,7 +1027,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:19</span>
   
 </div>
 
